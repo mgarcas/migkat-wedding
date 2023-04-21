@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
+        integrity="sha512-hq3a6A3jyG1EYk/Rf2c9/i+MsBfZz/cM8e1wRz18hrzmL1yjCJl8sIb+jX9sA2E2fW0anTtctwTt69IOkkbKlQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+MT&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% block head %}{% endblock %}
+</head>
+
+<body>
+    {% block header %}
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('main') }}">
+                <img src="{{ url_for('static', filename='pics/logoKM.jpg') }}" alt="Logo">
+            </a>
+        </div>
+        <h1 class="title">Our Wedding</h1>
+        <nav>
+            <a href="{{ url_for('main') }}">Home</a>
+            <a href="{{ url_for('about') }}">About Us</a>
+            <a href="#">RSVP</a>
+            <a href="#">Gallery</a>
+            <a href="#">Contact Us</a>
+        </nav>
+    </header>
+    {% endblock %}
+
+    {% block main %}{% endblock %}
+
+    {% block footer %}
+    <footer>
+        <div class="footer-info">
+            <p>Contact us: <a href="mailto:contact@ourwedding.com">contact@ourwedding.com</a>
+                | Phone: 123-456-7890</p>
+            <p>&copy; 2023 Our Wedding. All rights reserved.</p>
+        </div>
+        <blockquote>
+            "Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor others, it is not self-seeking, it is not easily angered, it keeps no record of wrongs. Love does not delight in evil but rejoices with the truth. It always protects, always trusts, always hopes, always perseveres." - 1 Corinthians 13:4-7
+        </blockquote>
+    </footer>
+    {% endblock %}
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block scripts %}{% endblock %}
+</body>
+
+</html>
