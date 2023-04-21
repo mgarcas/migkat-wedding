@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Wedding K&M - RSVP{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <h2>RSVP</h2>
+    <p>Please fill out the form below to RSVP for our wedding:</p>
+    <form method="POST" action="{{ url_for('rsvp') }}">
+        <div class="row">
+            <div class="six columns">
+                <label for="name">Name</label>
+                <input class="u-full-width" type="text" id="name" name="name">
+            </div>
+            <div class="six columns">
+                <label for="email">Email</label>
+                <input class="u-full-width" type="email" id="email" name="email">
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <label for="guests">Number of Guests</label>
+                <select class="u-full-width" id="guests" name="guests">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+            </div>
+            <div class="six columns">
+                <label for="attending">Will you be attending?</label>
+                <select class="u-full-width" id="attending" name="attending">
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+        </div>
+        <input class="button-primary" type="submit" value="Submit">
+    </form>
+</div>
+
+{% endblock %}

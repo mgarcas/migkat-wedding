@@ -5,11 +5,10 @@
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css"
-        integrity="sha512-hq3a6A3jyG1EYk/Rf2c9/i+MsBfZz/cM8e1wRz18hrzmL1yjCJl8sIb+jX9sA2E2fW0anTtctwTt69IOkkbKlQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+MT&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+MT&display=swap" rel="stylesheet">
     {% block head %}{% endblock %}
 </head>
 
@@ -25,7 +24,7 @@
         <nav>
             <a href="{{ url_for('main') }}">Home</a>
             <a href="{{ url_for('about') }}">About Us</a>
-            <a href="#">RSVP</a>
+            <a href="{{ url_for('rsvp') }}">RSVP</a>
             <a href="#">Gallery</a>
             <a href="#">Contact Us</a>
         </nav>
