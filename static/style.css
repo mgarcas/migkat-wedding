@@ -9,6 +9,8 @@ body {
     padding: 0;
     font-family: "Bodoni MT", serif;
     overflow-y: scroll;
+    caret-color: transparent;
+    font-size: 16px;
 }
 
 header {
@@ -66,6 +68,12 @@ nav a:hover {
     font-family: 'Bodoni MT', serif;
 }
 
+.rsvp {
+    margin-bottom: 15px;
+    caret-color: black;
+}
+
+
 footer {
     background-color: #2c3e50;
     color: #fff;
@@ -81,6 +89,7 @@ footer {
 
 .footer-info p {
     margin: 5px 0;
+    text-align: center;
 }
 
 .footer-info a {
@@ -104,10 +113,29 @@ footer {
     /* float: left; */
 }
 
-img#KM_lb {
+img#KM_lb,
+#pth {
     display: block;
     max-width: 100%;
     height: auto;
     margin: auto;
     padding-top: 30px;
-  }
+}
+
+.poem {
+    /* font-family: Georgia, serif; */
+    font-size: 17px;
+    line-height: 1.4em;
+    color: #333;
+    border-left: 4px solid #999;
+    padding-left: 40px;
+    margin: 20px 0;
+    text-align: left;
+    margin-top: 40px;
+}
+
+.poem-author {
+    font-size: 15px;
+    text-align: left;
+    margin-left: 150px;
+}

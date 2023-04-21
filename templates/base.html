@@ -26,7 +26,7 @@
             <a href="{{ url_for('main') }}">Home</a>
             <a href="{{ url_for('about') }}">About Us</a>
             <a href="{{ url_for('rsvp') }}">RSVP</a>
-            <a href="#">Gallery</a>
+            <a href="{{ url_for('ceremony') }}">Ceremony</a>
             <a href="#">Contact Us</a>
         </nav>
     </header>
@@ -37,9 +37,9 @@
     {% block footer %}
     <footer>
         <div class="footer-info">
-            <p>Contact us:</p>
-            <p><a href="mailto:contact@ourwedding.com">contact@ourwedding.com</a></p>
-            <p>Phones: 123-456-7890 (Katherine) | 123-456-7890 (Miguel) </p>
+            <p>Contact us: <br>
+            <a href="mailto:contact@ourwedding.com">contact@ourwedding.com</a><br>
+            123-456-7890 (Katherine) | 123-456-7890 (Miguel)</p>
             <p>&copy; 2023 Our Wedding</p>
         </div>
         <blockquote>

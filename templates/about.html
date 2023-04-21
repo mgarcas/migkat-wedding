@@ -5,6 +5,30 @@
 {% block main %}
 <div class="container">
     <h2>About Us</h2>
-    <p>Some info about us</p>
+    <div class="row">
+        <div class="six columns">
+            <img id="pth" src="{{ url_for('static', filename='pics/PXL_20230408.jpg') }}" alt="pathways" style="padding-top: 10px;">
+        </div>
+        <div class="six columns">
+            <blockquote class="poem">
+                <h4><i>Pathways </i><p style="padding-left: 10px; font-size: 15px;">Rainer Maria Rilke</p></h4>
+                <p>
+                    Understand, I`ll slip quietly <br>
+                    away from the noisy crowd <br>
+                    when I see the pale <br>
+                    stars rising, blooming, over the oaks. <br>
+                    <br>
+                    I`ll pursue solitary pathways <br>
+                    through the pale twilit meadows, <br>
+                    with only this one dream: <br>
+                    <br>
+                    <i>You come too</i>.<br>
+                    <p class="poem-author">Rainer Maria Rilke</p>
+                </p>
+            </blockquote>
+        </div>
+
+    </div>
+
 </div>
 {% endblock %}

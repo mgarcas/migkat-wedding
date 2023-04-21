@@ -10,6 +10,10 @@ def main():
 def about():
     return render_template('about.html')
 
+@app.route('/ceremony')
+def ceremony():
+    return render_template('ceremony.html')
+
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
     if request.method == 'POST':
@@ -27,4 +31,5 @@ def rsvp():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+    app.run(host='192.168.1.59',  debug=True)

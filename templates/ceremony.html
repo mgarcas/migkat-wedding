@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<div class="container">
+    <div class="row">
+        <div class="twelve columns">
+            <h2>Ceremony Information</h2>
+        </div>
+    </div>
+
+    <div class="row" style="text-align: left;">
+        <div class="six columns">
+            <h4>Date and Time</h4>
+            <p>Saturday, August 12, 2023<br>
+                3:00pm</p>
+
+            <h4>Location</h4>
+            <p>St. Sebastian Catholic Church<br>
+                67 Cole Avenue<br>
+                Providence, RI </p>
+
+            <h4>Parking</h4>
+            <p>There is a parking lot across the street from the church.</p>
+
+            <h4>Attire</h4>
+            <p>Semi-formal</p>
+
+            <h4>Notes</h4>
+            <p>Please arrive 15 minutes early to find seating.</p>
+        </div>
+
+        <div class="six columns">
+            <img src="{{ url_for('static', filename='pics/IMG_sbc.jpg') }}" alt="Ceremony" class="u-max-full-width" style="padding: 10px;">
+        </div>
+    </div>
+    <div style="width: 100%; height: 400px">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2972.6682498493324!2d-71.38926058456019!3d41.835441279225584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e444d5ef6c29f5%3A0xa010f45f59d48c30!2sSt.%20Sebastian%20Catholic%20Church!5e0!3m2!1ses!2sus!4v1682097099678!5m2!1ses!2sus" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+{% endblock %}
