@@ -12,13 +12,18 @@ body {
 }
 
 header {
-    background-color: #7798BC;
-    color: #fff;
+    /* background-color: #7798BC; */
+    /* color: #fff; */
+    /* color: #673147; */
+    color: #4E195F;
     padding: 1rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-variant: small-caps;
+
+    background-image: url("./pics/bg_std.png");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .title {
@@ -43,9 +48,10 @@ nav {
 }
 
 nav a {
-    color: #fff;
+    color: #4E195F;
     text-decoration: none;
-    padding: 15px;
+    padding: 10px;
+    font-weight: bold;
 }
 
 nav a:hover {

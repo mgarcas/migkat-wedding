@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Bodoni+MT&display=swap" rel="stylesheet">
+    <link rel="icon" href="{{ url_for('static', filename='pics/favicon.png') }}">
     {% block head %}{% endblock %}
 </head>
 
@@ -17,7 +18,7 @@
     <header>
         <div class="logo">
             <a href="{{ url_for('main') }}">
-                <img src="{{ url_for('static', filename='pics/logoKM.jpg') }}" alt="Logo">
+                <img src="{{ url_for('static', filename='pics/logoKM.png') }}" alt="Logo">
             </a>
         </div>
         <h1 class="title">Our Wedding</h1>

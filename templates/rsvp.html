@@ -9,7 +9,7 @@
     <p>Please fill out the form below to RSVP for our wedding:</p>
     <form method="POST" action="{{ url_for('rsvp') }}">
         <div class="row">
-            <div class="six columns">
+            <div class="six columns" style="margin-bottom: 15px;">
                 <label for="name">Name</label>
                 <input class="u-full-width" type="text" id="name" name="name">
             </div>
@@ -19,7 +19,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="six columns">
+            <div class="six columns" style="margin-bottom: 15px;">
                 <label for="guests">Number of Guests</label>
                 <select class="u-full-width" id="guests" name="guests">
                     <option value="1">1</option>
@@ -36,6 +36,10 @@
                 </select>
             </div>
         </div>
+        <label class="example-send-yourself-copy">
+            <input type="checkbox">
+            <span class="label-body">Send a copy to yourself</span>
+          </label>
         <input class="button-primary" type="submit" value="Submit">
     </form>
 </div>
