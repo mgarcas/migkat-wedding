@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block head %}
+<script type="text/javascript" src="{{ url_for('static', filename='scripts/script.js') }}"></script>
+{% endblock %}
+
 {% block title %}Wedding K&M - RSVP{% endblock %}
 
 {% block main %}
@@ -20,12 +24,14 @@
         </div>
         <div class="row">
             <div class="six columns rsvp">
-                <label for="guests">Number of Guests</label>
+                <label for="guests">Total Number of Guests</label>
                 <select class="u-full-width" id="guests" name="guests">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
-                    <option value="4">4</option>
+                    <option value="4">5</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                 </select>
             </div>
             <div class="six columns rsvp">
@@ -39,9 +45,21 @@
         <label class="example-send-yourself-copy">
             <input type="checkbox">
             <span class="label-body">Send a copy to yourself</span>
-          </label>
+        </label>
         <input class="button-primary" type="submit" value="Submit">
     </form>
+    <div class="row">
+        <select id="guests-select" name="guests" onchange="addGuestInputs()">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+        <div id="guests-names"></div>
+
+    </div>
 </div>
+
 
 {% endblock %}

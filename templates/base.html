@@ -5,11 +5,18 @@
     <title>{% block title %}{% endblock %}</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='skeleton.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='normalize.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+MT&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_modal.css') }}">
     <link rel="icon" href="{{ url_for('static', filename='pics/favicon.png') }}">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='scripts/contact.js') }}"></script>
     {% block head %}{% endblock %}
 </head>
 
@@ -25,9 +32,12 @@
         <nav>
             <a href="{{ url_for('main') }}">Home</a>
             <a href="{{ url_for('about') }}">About Us</a>
-            <a href="{{ url_for('rsvp') }}">RSVP</a>
+            <a href="{{ url_for('rehearsal') }}">Rehearsal dinner</a>
             <a href="{{ url_for('ceremony') }}">Ceremony</a>
-            <a href="#">Contact Us</a>
+            <a href="{{ url_for('reception') }}">Reception</a>
+            <a href="#">More?</a>
+            <a href="{{ url_for('rsvp') }}">RSVP</a>
+            <a class="mano modal-btn">Contact Us</a>
         </nav>
     </header>
     {% endblock %}
@@ -37,9 +47,24 @@
     {% block footer %}
     <footer>
         <div class="footer-info">
-            <p>Contact us: <br>
-            <a href="mailto:contact@ourwedding.com">contact@ourwedding.com</a><br>
-            123-456-7890 (Katherine) | 123-456-7890 (Miguel)</p>
+            <section id="contact">
+
+                <!-- modal here -->
+                <div class="modal" id="contact-modal">
+                    <div class="container modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Contact Information</h2>
+                        <p>Email: <a href="mailto:migkat23@gmail.com">migkat23@gmail.com</a></p>
+                        <p>Phone: (123) 456-7890</p>
+                    </div>
+                </div>
+                <!-- end -->
+
+                <p><strong>Contact us:</strong><br>
+                    <a href="mailto:contact@ourwedding.com">contact@ourwedding.com</a><br>
+                    123-456-7890 (Katherine) <br> 123-456-7890 (Miguel)
+                </p>
+            </section>
             <p>&copy; 2023 Our Wedding</p>
         </div>
         <blockquote>
@@ -51,7 +76,6 @@
     </footer>
     {% endblock %}
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     {% block scripts %}{% endblock %}
 </body>
 

@@ -23,7 +23,7 @@ header {
     flex-direction: column;
     align-items: center;
 
-    background-image: url("./pics/bg_std.png");
+    background-image: url("../pics/bg_std.png");
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -135,7 +135,6 @@ img#KM_lb,
 }
 
 .poem-author {
+    padding-left: 10px;
     font-size: 15px;
-    text-align: left;
-    margin-left: 150px;
 }
