@@ -83,5 +83,5 @@ def pending():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True)
-    app.run(host='192.168.1.59',  debug=True)
+    app.run(debug=True)
+    # app.run(host='192.168.1.59',  debug=True)
