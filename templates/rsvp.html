@@ -11,11 +11,11 @@
 <div class="container">
     <h2>RSVP</h2>
     <p>Please fill out the form below to RSVP for our wedding:</p>
-    <form method="POST" action="{{ url_for('rsvp') }}">
+    <form id="formRSVP" method="POST" action="{{ url_for('rsvp') }}">
         <div class="row">
             <div class="six columns rsvp">
                 <label for="name">Name</label>
-                <input class="u-full-width" type="text" id="name" name="name">
+                <input class="u-full-width" type="text" id="name" name="name" required>
             </div>
             <div class="six columns rsvp">
                 <label for="email">Email</label>
@@ -25,38 +25,57 @@
         <div class="row">
             <div class="six columns rsvp">
                 <label for="guests">Total Number of Guests</label>
-                <select class="u-full-width" id="guests" name="guests">
+                <!-- <select class="u-full-width" id="guests" name="guests">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
                     <option value="4">5</option>
                     <option value="5">5</option>
                     <option value="6">6</option>
+                </select> -->
+                <select id="guests-select" class="u-full-width rsvp" name="guests" required onchange="addGuestInputs()">
+                    <option value="" selected disabled>Select number of guests</option>
+                    <option value="0" hidden>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
                 </select>
+                <div id="guests-names"></div>
             </div>
             <div class="six columns rsvp">
                 <label for="attending">Will you be attending?</label>
-                <select class="u-full-width" id="attending" name="attending">
+                <!-- <select class="u-full-width" id="attending" name="attending">
                     <option value="yes">Yes</option>
                     <option value="no">No</option>
-                </select>
+                </select> -->
+                <div style="display: inline-flex; align-items: center;">
+                    <label style="padding: 10px;">
+                        <input type="radio" name="attending" value="yes" checked onchange="toggleSelectGuests()">
+                        <span>Yes</span>
+                    </label>
+                    <label class="inline">
+                        <input type="radio" name="attending" value="no" onchange="toggleSelectGuests()">
+                        <span>No</span>
+                    </label>
+                </div>
             </div>
         </div>
         <label class="example-send-yourself-copy">
             <input type="checkbox">
             <span class="label-body">Send a copy to yourself</span>
         </label>
-        <input class="button-primary" type="submit" value="Submit">
+        <div class="button-group">
+            <input class="button-primary btn-rsvp" type="submit" value="Submit">
+            <!-- <button class="button btn-rsvp clear-btn" onclick="document.getElementById('formRSVP').reset();"> -->
+            <button class="button btn-rsvp clear-btn" onclick="resetForm('formRSVP')">
+                Clear Form
+            </button>
+        </div>
     </form>
     <div class="row">
-        <select id="guests-select" name="guests" onchange="addGuestInputs()">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
-        <div id="guests-names"></div>
 
     </div>
 </div>

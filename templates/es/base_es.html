@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <title>{% block title %}{% endblock %}</title>
@@ -24,22 +24,22 @@
     {% block header %}
     <header>
         <div class="logo">
-            <a href="/">
+            <a href="/es">
                 <img src="{{ url_for('static', filename='pics/logoKM.png') }}" alt="Logo">
             </a>
         </div>
-        <h1 class="title">Our Wedding</h1>
+        <h1 class="title">Nuestra Boda</h1>
         <nav>
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/rehearsal">Rehearsal dinner</a>
-            <a href="/ceremony">Ceremony</a>
-            <a href="/reception">Reception</a>
-            <a href="#">More?</a>
-            <a href="/rsvp">RSVP</a>
-            <a class="mano modal-btn">Contact Us</a>
+            <a href="/es">Inicio</a>
+            <a href="/es/about">Sobre Nosotros</a>
+            <a href="/es/rehearsal">Cena de Ensayo</a>
+            <a href="/es/ceremony">Ceremonia</a>
+            <a href="/es/reception">Cena</a>
+            <a href="/es/pending">¿Más?</a>
+            <a href="/es/rsvp">Confirma Asistencia</a>
+            <a class="mano modal-btn">Contacto</a>
         </nav>
-        <a href="/es" class="button" onclick="document.cookie='lang=es';location.reload()" style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a>
+        <a href="/" class="button" onclick="document.cookie='lang=en';location.reload()" style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">English</a>
     </header>
     {% endblock %}
 

@@ -1,27 +1,59 @@
-from flask import Flask, render_template, request
+from flask import Flask, g, redirect, render_template, request
 import csv
 
 app = Flask(__name__)
 
+
+# Default language is English
+DEFAULT_LANGUAGE = 'en'
+
+
+@app.before_request
+def set_language():
+    lang = request.cookies.get('lang') or DEFAULT_LANGUAGE
+    g.lang = lang
+    g.path = '' if g.lang == 'en' else 'es'
+
+
+@app.route('/es')
 @app.route('/')
 def main():
-    return render_template('main.html')
+    if g.lang == 'en':
+        return render_template('main.html')
+    elif g.lang == 'es':
+        return render_template('es/main_es.html')
 
+
+# @app.route('/es')
+# def main_es():
+#     print('en español ahora')
+#     idioma = 'es'
+#     print(idioma)
+#     return render_template('es/main_es.html')
+
+@app.route('/es/about')
 @app.route('/about')
 def about():
-    return render_template('about.html')
+    if g.lang == 'en':
+        return render_template('about.html')
+    elif g.lang == 'es':
+        return render_template('es/work_in_progress_es.html')
+
 
 @app.route('/rehearsal')
 def rehearsal():
     return render_template('rehearsal.html')
 
+
 @app.route('/ceremony')
 def ceremony():
     return render_template('ceremony.html')
 
+
 @app.route('/reception')
 def reception():
     return render_template('reception.html')
+
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
@@ -35,8 +67,7 @@ def rsvp():
         with open('./rsvp/rsvp.csv', mode='a', newline='') as file_csv:
             writer = csv.writer(file_csv)
             # Escribir los datos en el archivo CSV
-            writer.writerow([name, email, guests,attending])
-
+            writer.writerow([name, email, guests, attending])
 
         # TODO: Add code to store the guest's RSVP information in a database or send an email notification
 
@@ -46,6 +77,11 @@ def rsvp():
         return render_template('rsvp.html')
 
 
+@app.route('/pending')
+def pending():
+    return render_template('work_in_progress.html')
+
+
 if __name__ == '__main__':
-    app.run(debug=True)
-    # app.run(host='192.168.1.59',  debug=True)
+    # app.run(debug=True)
+    app.run(host='192.168.1.59',  debug=True)
