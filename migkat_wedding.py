@@ -1,4 +1,5 @@
-from flask import Flask, g, redirect, render_template, request
+import datetime
+from flask import Flask, g, render_template, request
 import csv
 
 app = Flask(__name__)
@@ -6,20 +7,27 @@ app = Flask(__name__)
 
 # Default language is English
 DEFAULT_LANGUAGE = 'en'
-
+last_updated = datetime.datetime.utcnow()
 
 @app.before_request
 def set_language():
     lang = request.cookies.get('lang') or DEFAULT_LANGUAGE
     g.lang = lang
     g.path = '' if g.lang == 'en' else 'es'
+    print('settin language!!!', lang, 'PATH', request.path, 'ENDPOINT', request.endpoint, 'URL', request.script_root)
+    if request.path.startswith('/es'):
+        g.lang = 'es'
+    else:
+        g.lang = 'en'
+
 
 
 @app.route('/es')
 @app.route('/')
 def main():
+    print("##############", g.lang, request.cookies.get('lang'))
     if g.lang == 'en':
-        return render_template('main.html')
+        return render_template('main.html', last_updated=last_updated)
     elif g.lang == 'es':
         return render_template('es/main_es.html')
 
@@ -59,10 +67,15 @@ def reception():
 def rsvp():
     if request.method == 'POST':
         # Get the guest's name, email, and number of guests from the form submission
+        print('calling this', request)
         name = request.form['name']
         email = request.form['email']
-        guests = request.form['guests']
+        
         attending = request.form['attending']
+        if attending == 'no':
+            return "Pues menuda mierda"
+        
+        guests = request.form['guests']
 
         with open('./rsvp/rsvp.csv', mode='a', newline='') as file_csv:
             writer = csv.writer(file_csv)
@@ -83,5 +96,6 @@ def pending():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
-    # app.run(host='192.168.1.59',  debug=True)
+    app.run(debug=True) # online
+    # app.run(host='192.168.1.59',  debug=True) # Binghamton
+    # app.run(host='192.168.0.20',  debug=True) # Providence

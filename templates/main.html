@@ -9,9 +9,20 @@
     <h4>Katherine & Miguel</h4>
     <h5>August 12, 2023</h5>
 
-    <p>We are excited to share our special day with you. Please use the navigation links above to learn more about us, RSVP, view our photo gallery, and contact us with any questions you may have. We look forward to celebrating with you!
+    <p>We are excited to share our special day with you. Please use the navigation links above to learn more about us,
+        RSVP, view our photo gallery, and contact us with any questions you may have. We look forward to celebrating
+        with you!
     </p>
 
     <img id="KM_lb" src="{{ url_for('static', filename='pics/IMG-4332.jpg') }}" alt="KM_lb">
 </div>
 {% endblock %}
+
+<footer>
+    {% block last_updated %}
+    <!-- <div class="row" style="text-align: right;"> -->
+    <div class="row">
+        <small class="u-pull-right">Last updated: {{ last_updated.strftime('%Y-%m-%d %H:%M:%S UTC') }}</small>
+    </div>
+    {% endblock %}
+</footer>
