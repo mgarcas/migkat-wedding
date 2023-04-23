@@ -54,8 +54,12 @@ def rehearsal():
 
 
 @app.route('/ceremony')
+@app.route('/es/ceremony')
 def ceremony():
-    return render_template('ceremony.html')
+    if g.lang == 'en':
+        return render_template('ceremony.html')
+    elif g.lang == 'es':
+        return render_template('es/work_in_progress_es.html')
 
 
 @app.route('/reception')

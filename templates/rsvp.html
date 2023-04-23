@@ -27,6 +27,19 @@
             </div>
         </div>
         <div class="row">
+            <div class="four columns rsvp">
+                <label for="attending">Will you be attending?</label>
+                <div style="display: inline-flex; align-items: center;">
+                    <label style="padding: 10px;">
+                        <input type="radio" name="attending" value="yes" checked onchange="toggleSelectGuests()">
+                        <span>Yes</span>
+                    </label>
+                    <label class="inline">
+                        <input type="radio" name="attending" value="no" onchange="toggleSelectGuests()">
+                        <span>No</span>
+                    </label>
+                </div>
+            </div>
             <div class="six columns rsvp">
                 <label for="guests">Total Number of Guests</label>
                 <select id="guests-select" class="u-full-width rsvp" name="guests" required onchange="addGuests()">
@@ -40,26 +53,9 @@
                     <option value="6">6</option>
                 </select>
             </div>
-            <div class="six columns rsvp">
-                <label for="attending">Will you be attending?</label>
-                <div style="display: inline-flex; align-items: center;">
-                    <label style="padding: 10px;">
-                        <input type="radio" name="attending" value="yes" checked onchange="toggleSelectGuests()">
-                        <span>Yes</span>
-                    </label>
-                    <label class="inline">
-                        <input type="radio" name="attending" value="no" onchange="toggleSelectGuests()">
-                        <span>No</span>
-                    </label>
-                </div>
-            </div>
         </div>
 
-        <div id="names-meals" hidden>
-            <div class="row">
-                <h5>Meal Preferenes</h5>
-            </div>
-        </div>
+        <div id="names-meals" hidden></div>
 
         <div class="row">
             <div class="six columns rsvp">
