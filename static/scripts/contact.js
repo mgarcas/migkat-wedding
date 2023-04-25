@@ -1,4 +1,4 @@
-window.onload = function () {
+window.addEventListener('load', function () {
     var modal = document.getElementById("contact-modal");
     var btn = document.getElementsByClassName("modal-btn")[0];
     var span = document.getElementsByClassName("close")[0];
@@ -11,9 +11,10 @@ window.onload = function () {
         modal.style.display = "none";
     }
 
-    window.onclick = function (event) {
+    window.addEventListener('click', function (event) {
         if (event.target == modal) {
-            modal.style.display = "none";
+          modal.style.display = "none";
         }
-    }
-}
+      });
+
+});

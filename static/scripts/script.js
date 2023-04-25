@@ -1,3 +1,9 @@
+meals = [
+    { value: "meat", text: "Meat" },
+    { value: "fish", text: "Sword Fish" },
+    { value: "vegan", text: "Vegan Option" },
+    { value: "children", text: "Child Menu" }]
+
 function addGuests() {
     // Get the parent element to add the row to
     const mealPreferences = document.getElementById("names-meals");
@@ -16,22 +22,27 @@ function addGuests() {
     for (var i = 0; i < numGuests; i++) {
         // Create a new row
         const row = document.createElement("div");
-        row.classList.add("row", "rsvp");
-        // row.style.border = "thick solid #0000FF";
+        row.classList.add("row");
+        // row.style = "display: flex; align-items: center;";
 
-        // Create a new column
+        // Create a new columns
         const column_guest = document.createElement("div");
-        column_guest.classList.add("five", "columns");
+        column_guest.classList.add("four", "columns", "c-left");
         const column_meal = document.createElement("div");
-        column_meal.classList.add("five", "columns");
+        column_meal.classList.add("four", "columns", "c-left");
+        const column_age = document.createElement("div");
+        column_age.classList.add("three", "columns", "c-left");
+        // column_age.style = "display: flex; align-items: flex-end;";
 
         row.appendChild(column_guest);
         row.appendChild(column_meal);
+        row.appendChild(column_age);
         mealPreferences.appendChild(row);
         mealPreferences.appendChild(document.createElement("hr"));
 
-        generateGuest(column_guest, i)
-        generateMeal(column_meal, i)
+        generateGuest(column_guest, i);
+        generateMeal(column_meal, i);
+        generateAge(column_age, i);
 
     }
 
@@ -58,8 +69,10 @@ function generateGuest(column, i) {
 
     if (i == 0) {
         var nameFirstGuest = document.getElementById("name");
-        input.value = nameFirstGuest.value;
+        var surnameFirstGuest = document.getElementById("surname");
+        input.value = nameFirstGuest.value + " " + surnameFirstGuest.value;
         input.disabled = true;
+        input.classList.remove("rsvp");
     } else {
         input.placeholder = "Guest #" + (i + 1) + " name";
     }
@@ -99,17 +112,51 @@ function addOptionsMeal(select) {
     // Add the option element to the beginning of the select element
     select.insertBefore(placeholderOption, select.firstChild);
 
-    meals = [ "Meat", "Fish", "Vegan", "Child Menu"]
+    // meals = [ "Meat", "Fish", "Vegan", "Child Menu"]
 
-    meals.forEach(element => {
+    this.meals.forEach(element => {
         var mealOption = document.createElement("option");
-        mealOption.value = element;
-        mealOption.text = element
+        mealOption.value = element.value;
+        mealOption.text = element.text;
         select.appendChild(mealOption);
     });
+}
+
+function generateAge(column, i) {
+    var label = document.createElement("label");
+    var ageCheckbox = document.createElement("input");
+    var span = document.createElement("span");
+    var placeHolder = document.createElement("label")
+
+    ageCheckbox.type = "checkbox";
+    span.classList.add("label-body");
+    span.innerHTML = "Under 21?";
+    placeHolder.id = "checkbox-placeholder";
+    placeHolder.innerHTML = "&nbsp;"
+    // placeHolder.style = "height: 20px; position: relative; top: -10px; margin-bottom: 15px";
+
+    label.classList.add = "c-left";
+    // placeHolder.classList.add = "c-left";
+
+    label.appendChild(ageCheckbox);
+    label.appendChild(span);
+
+    column.appendChild(placeHolder);
+    column.appendChild(label);
+    
+
+
+    // label.htmlFor = "guest-meal-" + i;
+    // label.style.textAlign = "left"
+    // label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
+
+    {/* <input type="checkbox">
+    <span class="label-body">Send a copy to yourself</span> */}
 
 
 }
+
+
 
 function toggleSelectGuests() {
     var radioNo = document.querySelector('input[name="attending"][value="no"]');
@@ -143,13 +190,20 @@ function resetForm(params) {
 
 
 window.addEventListener('load', function () {
+    const firstInfo = document.getElementById("first-info");
     const nombre = document.getElementById("name");
     const apellido = document.getElementById("surname");
 
     nombre.addEventListener("input", function () {
         const guestNameZero = document.getElementById("guest-name-0");
         if (guestNameZero) {
-            guestNameZero.value = nombre.value;
+            guestNameZero.value = nombre.value + " " + apellido.value;
+        }
+    });
+    apellido.addEventListener("input", function () {
+        const guestNameZero = document.getElementById("guest-name-0");
+        if (guestNameZero) {
+            guestNameZero.value = nombre.value + " " + apellido.value;
         }
     });
 });

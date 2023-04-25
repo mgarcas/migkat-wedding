@@ -9,17 +9,47 @@ app = Flask(__name__)
 DEFAULT_LANGUAGE = 'en'
 last_updated = datetime.datetime.utcnow()
 
+# Functions
+
+def sendForm():
+    if request.method == 'POST':
+        # Get the guest's name, email, and number of guests from the form submission
+        print('calling this', request)
+        name = request.form['name']
+        email = request.form['email']
+
+        attending = request.form['attending']
+        if attending == 'no':
+            return "Pues menuda mierda"
+
+        guests = request.form['guests']
+
+        with open('./rsvp/rsvp.csv', mode='a', newline='') as file_csv:
+            writer = csv.writer(file_csv)
+            # Escribir los datos en el archivo CSV
+            writer.writerow([name, email, guests, attending])
+
+        # TODO: Add code to store the guest's RSVP information in a database or send an email notification
+
+        # Display a confirmation message to the guest
+        return True, name
+    else:
+        return False, "False"
+
+
+# Routes
+
 @app.before_request
 def set_language():
     lang = request.cookies.get('lang') or DEFAULT_LANGUAGE
     g.lang = lang
     g.path = '' if g.lang == 'en' else 'es'
-    print('settin language!!!', lang, 'PATH', request.path, 'ENDPOINT', request.endpoint, 'URL', request.script_root)
+    print('settin language!!!', lang, 'PATH', request.path,
+          'ENDPOINT', request.endpoint, 'URL', request.script_root)
     if request.path.startswith('/es'):
         g.lang = 'es'
     else:
         g.lang = 'en'
-
 
 
 @app.route('/es')
@@ -31,13 +61,6 @@ def main():
     elif g.lang == 'es':
         return render_template('es/main_es.html')
 
-
-# @app.route('/es')
-# def main_es():
-#     print('en español ahora')
-#     idioma = 'es'
-#     print(idioma)
-#     return render_template('es/main_es.html')
 
 @app.route('/es/about')
 @app.route('/about')
@@ -69,27 +92,9 @@ def reception():
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
-    if request.method == 'POST':
-        # Get the guest's name, email, and number of guests from the form submission
-        print('calling this', request)
-        name = request.form['name']
-        email = request.form['email']
-        
-        attending = request.form['attending']
-        if attending == 'no':
-            return "Pues menuda mierda"
-        
-        guests = request.form['guests']
-
-        with open('./rsvp/rsvp.csv', mode='a', newline='') as file_csv:
-            writer = csv.writer(file_csv)
-            # Escribir los datos en el archivo CSV
-            writer.writerow([name, email, guests, attending])
-
-        # TODO: Add code to store the guest's RSVP information in a database or send an email notification
-
-        # Display a confirmation message to the guest
-        return render_template('confirmation.html', name=name)
+    yes, name = sendForm()
+    if yes == True:
+        return render_template('confirmation.html', name=name, lang=g.lang)
     else:
         return render_template('rsvp.html')
 
@@ -102,4 +107,4 @@ def pending():
 if __name__ == '__main__':
     app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    # app.run(host='192.168.0.20',  debug=True) # Providence
+    # app.run(host='192.168.0.20',  debug=True)  # Providence

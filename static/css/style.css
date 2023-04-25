@@ -68,18 +68,26 @@ nav a:hover {
     font-family: 'Bodoni MT', serif;
 }
 
+.c-left {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
 /* RSVP */
 
 .rsvp {
-    margin-bottom: 15px;
     caret-color: black;
-    text-align: left;
+    /* overflow: hidden; */
+    /* outline: none; */
+    /* text-align: left; */
+    /* margin-bottom: 15px; */
 }
 
 .button-group {
     display: flex;
     justify-content: center;
-    width: 300px; /* set your desired width here */
+    width: 300px;
+    /* set your desired width here */
     margin: 0 auto;
 }
 
@@ -92,7 +100,14 @@ nav a:hover {
     color: white;
 }
 
+.radio-buttons {
+    display: inline-flex;
+    align-items: center;
+}
 
+#exampleMessage {
+    height: 180px;
+}
 
 /* Footer */
 

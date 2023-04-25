@@ -1,4 +1,5 @@
-.modal {
+.modal,
+.modal-menu {
     display: none;
     position: fixed;
     z-index: 1;
@@ -19,7 +20,8 @@
     width: 80%;
 }
 
-.close {
+.close,
+.close-menu {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -27,7 +29,9 @@
 }
 
 .close:hover,
-.close:focus {
+.close-menu:hover,
+.close:focus,
+.close-menu:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;
