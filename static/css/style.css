@@ -14,9 +14,6 @@ body {
 }
 
 header {
-    /* background-color: #7798BC; */
-    /* color: #fff; */
-    /* color: #673147; */
     color: #4E195F;
     padding: 1rem;
     display: flex;
@@ -87,7 +84,6 @@ nav a:hover {
     display: flex;
     justify-content: center;
     width: 300px;
-    /* set your desired width here */
     margin: 0 auto;
 }
 
@@ -174,4 +170,153 @@ img#KM_lb,
 .poem-author {
     padding-left: 10px;
     font-size: 15px;
+}
+
+
+
+/* new navbar */
+#my-nav nav {
+    background-color: #444;
+    padding: 10px 0;
+}
+
+#menu-wrap {
+    margin: 0 auto;
+}
+
+#menu {
+    list-style: none;
+    margin: 0 auto;
+    padding: 0;
+    text-align: center;
+}
+
+#menu>li {
+    position: relative;
+    width: 150px;
+    /* margin-bottom: 0; */
+}
+
+#menu>li:first-child>a {
+    text-transform: uppercase;
+    font-variant: small-caps;
+    cursor: pointer;
+}
+
+#menu>li>a {
+    border-bottom: 2px solid transparent;
+}
+
+#menu>li:focus-within,
+#menu>li:hover>a {
+    border-bottom: 2px solid #c6c6c6;
+}
+
+
+#menu>li>a {
+    color: #4E195F;
+    display: block;
+    padding: 10px 15px;
+    text-decoration: none;
+}
+
+#menu>li:hover>a {
+    background-color: #444;
+    color: #0FA0CE;
+}
+
+#menu ul {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1;
+    background-color: #444;
+    text-align: center;
+    width: 100%;
+    max-height: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+#menu ul li {
+    background-color: #444;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+#menu ul li a {
+    color: #0FA0CE;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+#menu ul li:hover a {
+    color: #0FA0CE;
+    background-color: #444;
+}
+
+#menu li:hover>ul {
+    display: block;
+    position: absolute;
+    display: block;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: none;
+}
+
+#menu li:hover>ul li:hover a {
+    background-color: #c6c6c6;
+    color: #2c3e50;
+}
+
+@media screen and (max-width: 480px) {
+    #my-nav nav {
+        position: relative;
+    }
+
+    #menu {
+        flex-wrap: wrap;
+    }
+
+    #menu>li {
+        width: 100%;
+        min-width: 200px;
+        max-width: 400px;
+    }
+
+    #menu>li:nth-child(3n+1) {
+        clear: left;
+    }
+
+    #menu ul {
+        position: static;
+        overflow: hidden;
+        max-height: 0;
+        transition: all 0.3s ease-in-out;
+        width: auto;
+    }
+
+    #menu li.active>ul {
+        display: block;
+        max-height: 500px;
+        position: absolute;
+        top: 100%;
+        left: 0;
+    }
+
+    #menu ul li {
+        display: block;
+        width: 100%;
+    }
+
+    #menu li ul li {
+        width: auto;
+        display: block;
+        text-align: center;
+    }
 }

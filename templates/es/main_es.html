@@ -15,3 +15,11 @@
     <img id="KM_lb" src="{{ url_for('static', filename='pics/IMG-4332.jpg') }}" alt="KM_lb">
 </div>
 {% endblock %}
+
+<footer>
+    {% block last_updated %}
+    <div class="row">
+        <small class="u-pull-right">Última actualización: {{ last_updated.strftime('%Y-%m-%d %H:%M:%S UTC') }}</small>
+    </div>
+    {% endblock %}
+</footer>

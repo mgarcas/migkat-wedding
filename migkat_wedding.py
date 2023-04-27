@@ -11,10 +11,23 @@ last_updated = datetime.datetime.utcnow()
 
 # Functions
 
+
 def sendForm():
     if request.method == 'POST':
+        names = []
+        foods = []
+        U21 = []
         # Get the guest's name, email, and number of guests from the form submission
         print('calling this', request)
+        guests = request.form['guests']
+
+        for i in range(guests):
+            names.append(request.form['guest-name-{}'.format(i)])
+            foods.append(request.form['guest-meal-{}'.format(i)])
+            U21.append("yes" if request.form['u21-{}'.format(i)] else "no")
+
+        print(names,foods)
+        
         name = request.form['name']
         email = request.form['email']
 
@@ -22,7 +35,7 @@ def sendForm():
         if attending == 'no':
             return "Pues menuda mierda"
 
-        guests = request.form['guests']
+        
 
         with open('./rsvp/rsvp.csv', mode='a', newline='') as file_csv:
             writer = csv.writer(file_csv)
@@ -59,7 +72,7 @@ def main():
     if g.lang == 'en':
         return render_template('main.html', last_updated=last_updated)
     elif g.lang == 'es':
-        return render_template('es/main_es.html')
+        return render_template('es/main_es.html', last_updated=last_updated)
 
 
 @app.route('/es/about')
@@ -104,7 +117,15 @@ def pending():
     return render_template('work_in_progress.html')
 
 
+@app.route('/guests')
+def table():
+    with open('rsvp/rsvp.csv', 'r') as file:
+        reader = csv.reader(file)
+        data = list(reader)
+    return render_template('guests.html', data=data)
+
+
 if __name__ == '__main__':
     app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    # app.run(host='192.168.0.20',  debug=True)  # Providence
+    # app.run(host='192.168.0.7',  debug=True)  # Providence

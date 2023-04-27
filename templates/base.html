@@ -19,6 +19,15 @@
 
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/contact.js') }}"></script>
     {% block head %}{% endblock %}
+
+    <!-- <div class="modal" id="contact-modal">
+        <div class="container modal-content">
+            <span class="close">&times;</span>
+            <h2>Contact Information</h2>
+            <p>Email: <a href="mailto:migkat23@gmail.com">migkat23@gmail.com</a></p>
+            <p>Phone: <a href="tel:+14046121182">+1 (401) 612-1182</a></p>
+        </div>
+    </div> -->
 </head>
 
 <body>
@@ -30,7 +39,7 @@
             </a>
         </div>
         <h1 class="title">Our Wedding</h1>
-        <nav>
+        <!-- <nav>
             <a href="/">Home</a>
             <a href="/about">About Us</a>
             <a href="/rehearsal">Welcome Dinner</a>
@@ -41,7 +50,8 @@
             <a class="mano modal-btn">Contact Us</a>
         </nav>
         <a href="/es" class="button" onclick="document.cookie='lang=es';location.reload()"
-            style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a>
+            style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a> -->
+        {% include 'elements/wrap.html' %}
     </header>
     {% endblock %}
 
@@ -54,14 +64,14 @@
 
                 {% block modals %}{% endblock %}
                 <!-- modal here -->
-                <div class="modal" id="contact-modal">
+                <!-- <div class="modal" id="contact-modal">
                     <div class="container modal-content">
                         <span class="close">&times;</span>
                         <h2>Contact Information</h2>
                         <p>Email: <a href="mailto:migkat23@gmail.com">migkat23@gmail.com</a></p>
                         <p>Phone: <a href="tel:+14046121182">+1 (401) 612-1182</a></p>
                     </div>
-                </div>
+                </div> -->
                 <!-- end -->
 
                 <p><strong>Contact us:</strong><br>
@@ -81,6 +91,58 @@
     </footer>
     {% endblock %}
 
+    <script>
+        // Get all the parent li elements
+        var parentListItems = document.querySelectorAll('#menu > li');
+
+        // Add click event listeners to each parent li element
+        parentListItems.forEach(function (parentListItem) {
+            parentListItem.addEventListener('click', function (event) {
+                // Get all the submenu elements inside the clicked parent li element
+                var subMenu = this.querySelector('ul');
+
+                // If the clicked parent li element has a submenu
+                if (subMenu) {
+                    // subMenu.style.width = subMenu.scrollWidth + "px";
+                    // Toggle the active class on the submenu
+                    subMenu.classList.toggle('active');
+
+                    // Check if the clicked parent li element is already active
+                    if (this.classList.contains('active')) {
+                        // If it is, close the open submenu
+                        subMenu.classList.remove('active');
+                    }
+
+                    // Toggle the active class on the clicked parent li element
+                    this.classList.toggle('active');
+
+                    // Add a click event listener to the document that will close the submenu when clicked
+                    document.addEventListener('click', closeSubMenu);
+
+                    // Define a function to close the submenu
+                    function closeSubMenu(event) {
+                        // If the clicked element is not inside the submenu or the clicked element is the submenu itself
+                        if (!subMenu.contains(event.target) || event.target == subMenu) {
+                            // Remove the active class from the submenu
+                            subMenu.classList.remove('active');
+
+                            // Remove the active class from the parent li element
+                            parentListItem.classList.remove('active');
+
+                            // Remove the click event listener from the document
+                            document.removeEventListener('click', closeSubMenu);
+                        }
+                    }
+                } else {
+                    // If the clicked parent li element does not have a submenu, remove the active class from the parent li element
+                    this.classList.remove('active');
+                }
+            });
+        });
+
+
+
+    </script>
     {% block scripts %}{% endblock %}
 </body>
 
