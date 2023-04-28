@@ -1,6 +1,7 @@
 <head>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style_modal.css') }}">
     <script type="text/javascript" src="{{ url_for('static', filename='scripts/contact.js') }}"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 
     <div class="modal" id="contact-modal">
         <div class="container modal-content">
@@ -12,14 +13,14 @@
     </div>
 </head>
 <nav>
-    <a href="/">Home</a>
+    <a href="/"><box-icon name='home' color="#4E195F"></box-icon></a>
     <a href="/about">About Us</a>
     <!-- <a href="/rehearsal">Welcome Dinner</a> -->
     <!-- <a href="/ceremony">Ceremony</a> -->
     <!-- <a href="/reception">Reception</a> -->
     <a href="#">More?</a>
     <a href="/rsvp">RSVP</a>
-
+    <a class="mano modal-btn">Contact Us</a>
 </nav>
 
 <nav id="my-nav">
@@ -39,8 +40,8 @@
     </div>
 </nav>
 <div class="button-group">
-    <a class="mano modal-btn button btn-rsvp"
-        style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Contact Us</a>
+    <!-- <a class="mano modal-btn button btn-rsvp"
+        style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Contact Us</a> -->
     <a href="/es" class="button btn-rsvp" onclick="document.cookie='lang=es';location.reload()"
         style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a>
 </div>

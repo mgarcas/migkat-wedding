@@ -44,6 +44,7 @@ nav {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 nav a {
@@ -194,7 +195,7 @@ img#KM_lb,
 #menu>li {
     position: relative;
     width: 150px;
-    /* margin-bottom: 0; */
+    margin-bottom: 0;
 }
 
 #menu>li:first-child>a {
@@ -221,8 +222,10 @@ img#KM_lb,
 }
 
 #menu>li:hover>a {
-    background-color: #444;
-    color: #0FA0CE;
+    /* background-color: #444; */
+    background-color: #2c3e50;
+    /* color: #0FA0CE; */
+    color: #c6c6c6;
 }
 
 #menu ul {
@@ -234,7 +237,8 @@ img#KM_lb,
     top: 100%;
     left: 0;
     z-index: 1;
-    background-color: #444;
+    /* background-color: #444; */
+    background-color: #2c3e50;
     text-align: center;
     width: 100%;
     max-height: 0;
@@ -242,13 +246,15 @@ img#KM_lb,
 }
 
 #menu ul li {
-    background-color: #444;
+    /* background-color: #444; */
+    background-color: #2c3e50;
     width: 100%;
     margin-bottom: 0;
 }
 
 #menu ul li a {
-    color: #0FA0CE;
+    /* color: #0FA0CE; */
+    color: #c6c6c6;
     display: block;
     text-decoration: none;
     text-align: center;
