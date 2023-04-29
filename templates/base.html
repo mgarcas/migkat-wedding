@@ -32,7 +32,7 @@
 
 <body>
     {% block header %}
-    <header>
+    <header id="main-header">
         <div class="logo">
             <a href="/">
                 <img src="{{ url_for('static', filename='pics/logoKM.png') }}" alt="Logo">
@@ -92,9 +92,10 @@
     </footer>
     {% endblock %}
 
-    <script>
+    <!-- <script>
         // Get all the parent li elements
         var parentListItems = document.querySelectorAll('#menu > li');
+        debugger;
 
         // Add click event listeners to each parent li element
         parentListItems.forEach(function (parentListItem) {
@@ -139,9 +140,18 @@
                     this.classList.remove('active');
                 }
             });
+        }); -->
+    <script>
+        window.addEventListener('load', function () {
+            const header = document.getElementById('main-header');
+            const styles = window.getComputedStyle(header);
+            const original = styles.getPropertyValue('height');
+
+            console.log(original)
+
+            header.style.height = original;
+
         });
-
-
 
     </script>
     {% block scripts %}{% endblock %}
