@@ -36,6 +36,11 @@ header {
 	margin: 0; */
 }
 
+.upper-header {
+    display: flex;
+    justify-content: center;
+}
+
 h2 {
     font-variant: small-caps;
 }
@@ -58,8 +63,18 @@ nav a:hover {
     background-color: #444;
 }
 
-nav box-icon:hover {
-    color: #444;
+.icon-home {
+    fill: #4E195F;
+}
+
+nav a:hover .icon-home {
+    color: unset;
+    fill: #1EAEDB;
+}
+
+.icon-menu {
+    fill: #4E195F;
+    vertical-align: -6.5px;
 }
 
 .container {
@@ -198,7 +213,8 @@ img#KM_lb,
 
 #menu>li {
     position: relative;
-    width: 150px;
+    /* width: 150px; */
+    width: 100%;
     margin-bottom: 0;
 }
 
@@ -230,6 +246,10 @@ img#KM_lb,
     background-color: #2c3e50;
     /* color: #0FA0CE; */
     color: #c6c6c6;
+}
+
+#menu>li:hover .icon-menu {
+    fill: #c6c6c6;
 }
 
 #menu ul {

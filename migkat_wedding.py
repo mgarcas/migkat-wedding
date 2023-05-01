@@ -26,16 +26,14 @@ def sendForm():
             foods.append(request.form['guest-meal-{}'.format(i)])
             U21.append("yes" if request.form['u21-{}'.format(i)] else "no")
 
-        print(names,foods)
-        
+        print(names, foods)
+
         name = request.form['name']
         email = request.form['email']
 
         attending = request.form['attending']
         if attending == 'no':
             return "Pues menuda mierda"
-
-        
 
         with open('./rsvp/rsvp.csv', mode='a', newline='') as file_csv:
             writer = csv.writer(file_csv)
@@ -84,9 +82,13 @@ def about():
         return render_template('es/work_in_progress_es.html')
 
 
+@app.route('/es/rehearsal')
 @app.route('/rehearsal')
 def rehearsal():
-    return render_template('rehearsal.html')
+    if g.lang == 'en':
+        return render_template('rehearsal.html')
+    elif g.lang == 'es':
+        return render_template('es/work_in_progress_es.html')
 
 
 @app.route('/ceremony')
@@ -126,6 +128,6 @@ def table():
 
 
 if __name__ == '__main__':
-    app.run(debug=True) # online
+    # app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    # app.run(host='192.168.0.7',  debug=True)  # Providence
+    app.run(host='192.168.0.7',  debug=True)  # Providence

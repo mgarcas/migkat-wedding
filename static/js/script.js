@@ -32,7 +32,6 @@ function addGuests() {
         column_meal.classList.add("four", "columns", "c-left");
         const column_age = document.createElement("div");
         column_age.classList.add("three", "columns", "c-left");
-        // column_age.style = "display: flex; align-items: flex-end;";
 
         row.appendChild(column_guest);
         row.appendChild(column_meal);
@@ -43,11 +42,7 @@ function addGuests() {
         generateGuest(column_guest, i);
         generateMeal(column_meal, i);
         generateAge(column_age, i);
-
     }
-
-    // addGuestInputs(numGuests);
-    // addMealSelect(numGuests)
 }
 
 // RSVP
@@ -112,8 +107,6 @@ function addOptionsMeal(select) {
     // Add the option element to the beginning of the select element
     select.insertBefore(placeholderOption, select.firstChild);
 
-    // meals = [ "Meat", "Fish", "Vegan", "Child Menu"]
-
     this.meals.forEach(element => {
         var mealOption = document.createElement("option");
         mealOption.value = element.value;
@@ -136,24 +129,12 @@ function generateAge(column, i) {
     // placeHolder.style = "height: 20px; position: relative; top: -10px; margin-bottom: 15px";
 
     label.classList.add = "c-left";
-    // placeHolder.classList.add = "c-left";
 
     label.appendChild(ageCheckbox);
     label.appendChild(span);
 
     column.appendChild(placeHolder);
     column.appendChild(label);
-    
-
-
-    // label.htmlFor = "guest-meal-" + i;
-    // label.style.textAlign = "left"
-    // label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
-
-    {/* <input type="checkbox">
-    <span class="label-body">Send a copy to yourself</span> */}
-
-
 }
 
 

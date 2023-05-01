@@ -1,33 +1,15 @@
-<head>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_modal.css') }}">
-    <script type="text/javascript" src="{{ url_for('static', filename='js/contact.js') }}"></script>
-    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-
-    <div class="modal" id="contact-modal">
-        <div class="container modal-content">
-            <span class="close">&times;</span>
-            <h2>Contact Information</h2>
-            <p>Email: <a href="mailto:migkat23@gmail.com">migkat23@gmail.com</a></p>
-            <p>Phone: <a href="tel:+14046121182">+1 (401) 612-1182</a></p>
-        </div>
-    </div>
-</head>
 <nav>
-    <a href="/"><box-icon name='home' color="#4E195F"></box-icon></a>
+    <a href="/"><box-icon class="icon-home" name='home'></box-icon></a>
     <a href="/about">About Us</a>
-    <!-- <a href="/rehearsal">Welcome Dinner</a> -->
-    <!-- <a href="/ceremony">Ceremony</a> -->
-    <!-- <a href="/reception">Reception</a> -->
     <a href="#">More?</a>
     <a href="/rsvp">RSVP</a>
-    <a class="mano modal-btn">Contact Us</a>
 </nav>
 
 <nav id="my-nav">
     <div id="menu-wrap">
         <ul id="menu">
             <li>
-                <a>Wedding Day</a>
+                <a><box-icon class="icon-menu" name='menu'></box-icon> Wedding Day</a>
                 <ul>
                     <li><a href="#">Accomodation</a></li>
                     <li><a href="/rehearsal">Welcome Dinner</a></li>
@@ -40,9 +22,16 @@
     </div>
 </nav>
 
-<div class="button-group">
-    <!-- <a class="mano modal-btn button btn-rsvp"
-        style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Contact Us</a> -->
+<!-- <div class="button-group">
     <a href="/es" class="button btn-rsvp" onclick="document.cookie='lang=es';location.reload()"
         style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a>
-</div>
+</div> -->
+
+<script>
+    window.addEventListener("load", function () {
+        var liActive = document.querySelector("#menu li");
+        if (liActive.classList.contains("active")) {
+            liActive.classList.remove("active")
+        }
+    });
+</script>

@@ -3,54 +3,34 @@
 
 <head>
     <title>{% block title %}{% endblock %}</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style_modal.css') }}">
-    <link rel="icon" href="{{ url_for('static', filename='images/favicon.png') }}">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-        rel="stylesheet">
-
-    <script type="text/javascript" src="{{ url_for('static', filename='js/contact.js') }}"></script>
+    {% include 'elements/head.html' %}
     {% block head %}{% endblock %}
-
-    <!-- <div class="modal" id="contact-modal">
-        <div class="container modal-content">
-            <span class="close">&times;</span>
-            <h2>Contact Information</h2>
-            <p>Email: <a href="mailto:migkat23@gmail.com">migkat23@gmail.com</a></p>
-            <p>Phone: <a href="tel:+14046121182">+1 (401) 612-1182</a></p>
-        </div>
-    </div> -->
 </head>
 
 <body>
     {% block header %}
     <header id="main-header">
-        <div class="logo">
+        <div class="row u-full-width upper-header">
+            <div class="one-third column">
+                <nav><a href="/es" style="word-spacing: -2.5px;" onclick="document.cookie='lang=es';location.reload()"><u>EN</u> | ES</a></nav>
+            </div>
+            <div class="one-third column upper-header">
+                <div class="logo">
+                    <a href="/es">
+                        <img src="{{ url_for('static', filename='images/logoKM.png') }}" alt="Logo">
+                    </a>
+                </div>
+            </div>
+            <div class="one-third column">
+                <nav><a class="mano modal-btn u-pull-right">Contact Us</a></nav>
+            </div>
+        </div>
+        <!-- <div class="logo">
             <a href="/">
                 <img src="{{ url_for('static', filename='images/logoKM.png') }}" alt="Logo">
             </a>
-        </div>
+        </div> -->
         <h1 class="title">Our Wedding</h1>
-        <!-- <nav>
-            <a href="/">Home</a>
-            <a href="/about">About Us</a>
-            <a href="/rehearsal">Welcome Dinner</a>
-            <a href="/ceremony">Ceremony</a>
-            <a href="/reception">Reception</a>
-            <a href="#">More?</a>
-            <a href="/rsvp">RSVP</a>
-            <a class="mano modal-btn">Contact Us</a>
-        </nav>
-        <a href="/es" class="button" onclick="document.cookie='lang=es';location.reload()"
-            style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a> -->
         {% include 'elements/wrap.html' %}
     </header>
     {% endblock %}
@@ -61,19 +41,6 @@
     <footer>
         <div class="footer-info">
             <section id="contact">
-
-                {% block modals %}{% endblock %}
-                <!-- modal here -->
-                <!-- <div class="modal" id="contact-modal">
-                    <div class="container modal-content">
-                        <span class="close">&times;</span>
-                        <h2>Contact Information</h2>
-                        <p>Email: <a href="mailto:migkat23@gmail.com">migkat23@gmail.com</a></p>
-                        <p>Phone: <a href="tel:+14046121182">+1 (401) 612-1182</a></p>
-                    </div>
-                </div> -->
-                <!-- end -->
-
                 <p><strong>Contact us:</strong><br>
                     <a href="mailto:contact@ourwedding.com">contact@ourwedding.com</a><br>
                     123-456-7890 (Katherine) <br> 123-456-7890 (Miguel)
@@ -92,69 +59,20 @@
     </footer>
     {% endblock %}
 
-    <!-- <script>
-        // Get all the parent li elements
-        var parentListItems = document.querySelectorAll('#menu > li');
-        debugger;
-
-        // Add click event listeners to each parent li element
-        parentListItems.forEach(function (parentListItem) {
-            parentListItem.addEventListener('click', function (event) {
-                // Get all the submenu elements inside the clicked parent li element
-                var subMenu = this.querySelector('ul');
-
-                // If the clicked parent li element has a submenu
-                if (subMenu) {
-                    // subMenu.style.width = subMenu.scrollWidth + "px";
-                    // Toggle the active class on the submenu
-                    subMenu.classList.toggle('active');
-
-                    // Check if the clicked parent li element is already active
-                    if (this.classList.contains('active')) {
-                        // If it is, close the open submenu
-                        subMenu.classList.remove('active');
-                    }
-
-                    // Toggle the active class on the clicked parent li element
-                    this.classList.toggle('active');
-
-                    // Add a click event listener to the document that will close the submenu when clicked
-                    document.addEventListener('click', closeSubMenu);
-
-                    // Define a function to close the submenu
-                    function closeSubMenu(event) {
-                        // If the clicked element is not inside the submenu or the clicked element is the submenu itself
-                        if (!subMenu.contains(event.target) || event.target == subMenu) {
-                            // Remove the active class from the submenu
-                            subMenu.classList.remove('active');
-
-                            // Remove the active class from the parent li element
-                            parentListItem.classList.remove('active');
-
-                            // Remove the click event listener from the document
-                            document.removeEventListener('click', closeSubMenu);
-                        }
-                    }
-                } else {
-                    // If the clicked parent li element does not have a submenu, remove the active class from the parent li element
-                    this.classList.remove('active');
-                }
-            });
-        }); -->
+    {% block scripts %}
     <script>
         window.addEventListener('load', function () {
             const header = document.getElementById('main-header');
             const styles = window.getComputedStyle(header);
             const original = styles.getPropertyValue('height');
-
-            console.log(original)
-
             header.style.height = original;
-
         });
-
     </script>
-    {% block scripts %}{% endblock %}
+    {% endblock %}
+
+    {% block modals %}
+    {% include 'modals/contact.html' %}
+    {% endblock %}
 </body>
 
 </html>
