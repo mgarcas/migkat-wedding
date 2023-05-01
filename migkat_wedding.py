@@ -128,6 +128,6 @@ def table():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True) # online
+    app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    app.run(host='192.168.0.7',  debug=True)  # Providence
+    # app.run(host='192.168.0.7',  debug=True)  # Providence
