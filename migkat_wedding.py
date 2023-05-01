@@ -121,7 +121,7 @@ def pending():
 
 @app.route('/guests')
 def table():
-    with open('rsvp/rsvp.csv', 'r') as file:
+    with open('./rsvp/rsvp.csv', 'r') as file:
         reader = csv.reader(file)
         data = list(reader)
     return render_template('guests.html', data=data)
