@@ -1,3 +1,20 @@
+.adjusted {
+    white-space: nowrap;
+    width: auto;
+}
+
+td,
+th {
+    white-space: nowrap;
+    width: auto;
+    padding-right: 1rem;
+}
+
+
+td:nth-child(7) {
+    white-space: normal;
+}
+
 /* table td {
     padding: 10px;
 } */

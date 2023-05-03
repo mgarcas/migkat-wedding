@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/rsvp.js') }}"></script>
 <script type="text/javascript" src="{{ url_for('static', filename='js/menu.js') }}"></script>
 {% endblock %}
 
@@ -74,7 +74,7 @@
                     <label for="exampleMessage">Message</label>
                     <textarea class="u-full-width rsvp"
                         placeholder="- Leave any additional information you'd like us to know.&#13;&#10;- Do you have any dietary restrictions or allergies? Please, let us know!&#13;&#10;- Do you have a favorite song you'd like to dance to at the reception? Tell us about it!"
-                        id="exampleMessage"></textarea>
+                        id="exampleMessage" name="message"></textarea>
                 </div>
             </div>
         </div>

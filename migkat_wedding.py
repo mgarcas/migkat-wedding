@@ -1,6 +1,8 @@
 import datetime
-from flask import Flask, g, render_template, request
-import csv
+import json
+import os
+from flask import Flask, g, redirect, render_template, request
+import get_data_guests
 
 app = Flask(__name__)
 
@@ -12,33 +14,18 @@ last_updated = datetime.datetime.utcnow()
 # Functions
 
 
-def sendForm():
+def getForm():
     if request.method == 'POST':
-        names = []
-        foods = []
-        U21 = []
-        # Get the guest's name, email, and number of guests from the form submission
-        print('calling this', request)
-        guests = request.form['guests']
-
-        for i in range(guests):
-            names.append(request.form['guest-name-{}'.format(i)])
-            foods.append(request.form['guest-meal-{}'.format(i)])
-            U21.append("yes" if request.form['u21-{}'.format(i)] else "no")
-
-        print(names, foods)
 
         name = request.form['name']
-        email = request.form['email']
 
-        attending = request.form['attending']
-        if attending == 'no':
-            return "Pues menuda mierda"
+        if request.form['attending'] == 'no':
+            return False, name
 
-        with open('./rsvp/rsvp.csv', mode='a', newline='') as file_csv:
-            writer = csv.writer(file_csv)
-            # Escribir los datos en el archivo CSV
-            writer.writerow([name, email, guests, attending])
+        path_json = os.path.join(app.root_path, 'data', 'guests.json')
+        get_data_guests.dumpToJson(request.form, path_json)
+
+        
 
         # TODO: Add code to store the guest's RSVP information in a database or send an email notification
 
@@ -107,27 +94,37 @@ def reception():
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
-    yes, name = sendForm()
-    if yes == True:
-        return render_template('confirmation.html', name=name, lang=g.lang)
+    if request.method == 'POST':
+
+        attending,name = getForm()
+    
+        if attending:
+            return render_template('confirmation.html', name=name, lang=g.lang)
+        else:
+            return redirect('/under_construction')
     else:
         return render_template('rsvp.html')
 
 
-@app.route('/pending')
-def pending():
+@app.route('/under_construction')
+def under_construction():
     return render_template('work_in_progress.html')
 
 
 @app.route('/guests')
 def table():
-    with open('./rsvp/rsvp.csv', 'r') as file:
-        reader = csv.reader(file)
-        data = list(reader)
+    path = os.path.join(app.root_path, 'data', 'guests.json')
+    with open(path, 'r') as file:
+        data = json.load(file)
     return render_template('guests.html', data=data)
+
+@app.route('/test')
+def test():
+    # return os.path.join(app.app_context)
+    return app.static_folder
 
 
 if __name__ == '__main__':
-    app.run(debug=True) # online
+    # app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    # app.run(host='192.168.0.7',  debug=True)  # Providence
+    app.run(host='192.168.0.7',  debug=True)  # Providence

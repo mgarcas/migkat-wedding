@@ -8,15 +8,15 @@
 </head>
 
 <body>
-    {% block header %}
     <header id="main-header">
         <div class="row u-full-width upper-header">
             <div class="one-third column">
-                <nav><a href="/es" style="word-spacing: -2.5px;" onclick="document.cookie='lang=es';location.reload()"><u>EN</u> | ES</a></nav>
+                <nav><a href="/es" style="word-spacing: -2.5px;"
+                        onclick="document.cookie='lang=es';location.reload()"><u>EN</u> | ES</a></nav>
             </div>
             <div class="one-third column upper-header">
                 <div class="logo">
-                    <a href="/es">
+                    <a href="/">
                         <img src="{{ url_for('static', filename='images/logoKM.png') }}" alt="Logo">
                     </a>
                 </div>
@@ -25,20 +25,16 @@
                 <nav><a class="mano modal-btn u-pull-right">Contact Us</a></nav>
             </div>
         </div>
-        <!-- <div class="logo">
-            <a href="/">
-                <img src="{{ url_for('static', filename='images/logoKM.png') }}" alt="Logo">
-            </a>
-        </div> -->
         <h1 class="title">Our Wedding</h1>
         {% include 'elements/wrap.html' %}
+        {% block header %}{% endblock %}
     </header>
-    {% endblock %}
 
     {% block main %}{% endblock %}
 
-    {% block footer %}
+
     <footer>
+        {% block footer %}{% endblock %}
         <div class="footer-info">
             <section id="contact">
                 <p><strong>Contact us:</strong><br>
@@ -57,9 +53,8 @@
         </blockquote>
         {% block last_updated %} {% endblock %}
     </footer>
-    {% endblock %}
 
-    {% block scripts %}
+
     <script>
         window.addEventListener('load', function () {
             const header = document.getElementById('main-header');
@@ -68,11 +63,12 @@
             header.style.height = original;
         });
     </script>
-    {% endblock %}
+    {% block scripts %}{% endblock %}
 
-    {% block modals %}
+
+    {% block modals %}{% endblock %}
     {% include 'modals/contact.html' %}
-    {% endblock %}
+
 </body>
 
 </html>

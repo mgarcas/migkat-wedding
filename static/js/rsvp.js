@@ -66,7 +66,8 @@ function generateGuest(column, i) {
         var nameFirstGuest = document.getElementById("name");
         var surnameFirstGuest = document.getElementById("surname");
         input.value = nameFirstGuest.value + " " + surnameFirstGuest.value;
-        input.disabled = true;
+        // input.disabled = true;
+        input.readOnly = true;
         input.classList.remove("rsvp");
     } else {
         input.placeholder = "Guest #" + (i + 1) + " name";
@@ -85,6 +86,7 @@ function generateMeal(column, i) {
     label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
 
     select.className = "u-full-width";
+    select.name = "guest-meal-" + i;
 
     select.placeholder = "Guest #" + (i + 1) + " Meal";
 
@@ -122,6 +124,7 @@ function generateAge(column, i) {
     var placeHolder = document.createElement("label")
 
     ageCheckbox.type = "checkbox";
+    ageCheckbox.name = "guest-u21-" + i;
     span.classList.add("label-body");
     span.innerHTML = "Under 21?";
     placeHolder.id = "checkbox-placeholder";
@@ -189,73 +192,23 @@ window.addEventListener('load', function () {
     });
 });
 
+// document.addEventListener('DOMContentLoaded', () => {
+//     const form = document.querySelector('#formRSVP');
+//     form.addEventListener('submit', async (event) => {
+//         event.preventDefault(); // Prevent default form submission behavior
 
+//         const formData = new FormData(form); // Get form data
+//         const json = JSON.stringify(Object.fromEntries(formData)); // Convert form data to JSON
 
+//         const response = await fetch(form.action, { // Send POST request
+//             method: form.method,
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             },
+//             body: json
+//         });
 
-
-
-
-
-
-// old and unused code
-
-function addGuestInputs(numGuests) {
-
-    var guestsNamesDiv = document.getElementById("guests-names");
-    var nameFirstGuest = document.getElementById("name");
-    guestsNamesDiv.innerHTML = ""; // Clear any previous input fields
-
-    for (var i = 0; i < numGuests; i++) {
-        var label = document.createElement("label");
-        var input = document.createElement("input");
-
-        label.htmlFor = "guest-name-" + i;
-        label.innerHTML = "Guest #" + (i + 1) + " name";
-
-        input.type = "text";
-        input.name = "guest-name-" + i;
-        input.className = "u-full-width rsvp";
-        input.id = "guest-name-" + i;
-
-
-        if (i == 0) {
-            input.value = nameFirstGuest.value;
-            input.disabled = true;
-        } else {
-            input.placeholder = "Guest #" + (i + 1) + " name";
-        }
-
-        guestsNamesDiv.appendChild(label);
-        guestsNamesDiv.appendChild(input);
-    }
-}
-
-function addMealSelect(numGuests) {
-    var guestsMealsDiv = document.getElementById("guests-meals");
-    guestsMealsDiv.innerHTML = ""; // Clear any previous input fields
-
-    for (var i = 0; i < numGuests; i++) {
-        var label = document.createElement("label");
-        var select = document.createElement("select");
-
-        label.htmlFor = "guest-meal-" + i;
-        label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
-
-        // input.type = "text";
-        // input.name = "guest-name-" + i;
-        select.className = "u-full-width rsvp";
-        // input.id = "guest-name-" + i;
-
-
-        // if (i == 0) {
-        //     input.value = nameFirstGuest.value;
-        //     input.disabled = true;
-        // } else {
-        select.placeholder = "Guest #" + (i + 1) + " Meal";
-        // }
-
-        guestsMealsDiv.appendChild(label);
-        guestsMealsDiv.appendChild(select);
-    }
-
-}
+//         const data = await response.json(); // Parse response JSON
+//         console.log(data); // Log response data to console
+//     });
+// });

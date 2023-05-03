@@ -9,24 +9,30 @@
 
 {% block main %}
 <div class="container">
-    <h2>Welcome to Our Wedding Site</h2>
+    <h2>Guests answers</h2>
 
     <table class="u-full-width">
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Total Guests</th>
-                <th>Yes/No</th>
+                {% for key in data[0].keys() %}
+                <th>{{ key }}</th>
+                {% endfor %}
             </tr>
         </thead>
-        {% for row in data %}
-        <tr>
-            {% for item in row %}
-            <td>{{ item }}</td>
+        <tbody>
+            {% for row in data %}
+            <tr>
+                {% for value in row.values() %}
+                <td>{{ value }}</td>
+                {% endfor %}
+            </tr>
             {% endfor %}
-        </tr>
-        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>no foot</td>
+            </tr>
+        </tfoot>
     </table>
 
 </div>
