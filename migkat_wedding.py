@@ -25,8 +25,6 @@ def getForm():
         path_json = os.path.join(app.root_path, 'data', 'guests.json')
         get_data_guests.dumpToJson(request.form, path_json)
 
-        
-
         # TODO: Add code to store the guest's RSVP information in a database or send an email notification
 
         # Display a confirmation message to the guest
@@ -96,8 +94,8 @@ def reception():
 def rsvp():
     if request.method == 'POST':
 
-        attending,name = getForm()
-    
+        attending, name = getForm()
+
         if attending:
             return render_template('confirmation.html', name=name, lang=g.lang)
         else:
@@ -118,6 +116,7 @@ def table():
         data = json.load(file)
     return render_template('guests.html', data=data)
 
+
 @app.route('/test')
 def test():
     # return os.path.join(app.app_context)
@@ -125,6 +124,6 @@ def test():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True) # online
+    app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    app.run(host='192.168.0.7',  debug=True)  # Providence
+    # app.run(host='192.168.0.7',  debug=True)  # Providence
