@@ -1,0 +1,50 @@
+<div class="container-nav">
+    <ul class="nav-tabs">
+        <li><a href="/"><box-icon class="icon-home" name='home'></box-icon></a></li>
+        <li><a href="/about">About Us</a></li>
+        <li><a href="#">More?</a></li>
+        <li><a href="/rsvp">RSVP</a></li>
+    </ul>
+</div>
+
+
+
+<style>
+    .container-nav {
+        padding-top: 10px;
+        margin: 0 auto;
+    }
+
+    .nav-tabs {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        /* border-bottom: 1px solid #ccc; */
+        display: flex;
+        justify-content: center;
+        /* justify-content: space-between; */
+        align-items: center;
+    }
+
+    .nav-tabs li {
+        display: inline-block;
+        /* margin-right: 20px; */
+    }
+
+    .nav-tabs li:last-child {
+        margin-right: 0;
+    }
+
+    .nav-tabs li a {
+        text-decoration: none;
+        color: #4E195F;
+        font-weight: bold;
+        padding: 10px;
+        border-bottom: 3px solid transparent;
+    }
+
+    .nav-tabs li a:hover,
+    .nav-tabs li a.active {
+        border-bottom: 3px solid #4E195F;
+    }
+</style>

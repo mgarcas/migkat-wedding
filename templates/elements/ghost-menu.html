@@ -1,0 +1,119 @@
+<nav class="ghost-menu">
+    <button class="close-button">&times;</button>
+    <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+    </ul>
+</nav>
+
+
+<script>
+    // Show/hide the ghost menu when the button is clicked
+    var menuButton = document.getElementById("menu-button");
+    var ghostMenu = document.querySelector(".ghost-menu");
+    var closeBtn = ghostMenu.querySelector('.close-button');
+
+    menuButton.addEventListener("click", function () {
+        ghostMenu.classList.toggle("show");
+    });
+
+    function toggleMenu() {
+        ghostMenu.classList.toggle('show');
+    }
+
+    function closeMenu(event) {
+        if (!ghostMenu.contains(event.target)) {
+            ghostMenu.classList.remove('active');
+        }
+    }
+
+    ghostMenu.addEventListener('click', function (event) {
+        if (event.target === closeBtn) {
+            toggleMenu();
+        }
+    });
+    document.addEventListener('click', closeMenu);
+</script>
+
+<style>
+    /* Custom styles for the Ghost Menu */
+    .ghost-menu {
+        position: fixed;
+        top: 0;
+        left: -200px;
+        /* hide the menu offscreen */
+        width: 200px;
+        height: 100vh;
+        background-color: #333;
+        transition: left 0.5s;
+        z-index: 999;
+    }
+
+    .ghost-menu.show {
+        left: 0;
+    }
+
+    .ghost-menu ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .ghost-menu li {
+        margin: 0;
+        padding: 0;
+    }
+
+    .ghost-menu a {
+        display: block;
+        padding: 1rem;
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .ghost-menu a:hover {
+        background-color: #555;
+    }
+
+    @media (max-width: 767px) {
+        .ghost-menu {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 999;
+            transform: translateX(-100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .ghost-menu.show {
+            transform: translateX(0);
+        }
+
+        .ghost-menu ul {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            padding: 0;
+        }
+
+        .ghost-menu ul li {
+            margin-bottom: 1rem;
+        }
+
+        .ghost-menu ul li a {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .ghost-menu ul li a:hover {
+            color: #666;
+        }
+    }
+</style>

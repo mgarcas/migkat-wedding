@@ -4,13 +4,21 @@
 }
 
 body {
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
+    background: linear-gradient(rgba(245, 245, 245, 0.7), rgba(245, 245, 245, 0.7)),
+        url("../images/bg_std.png");
+    /* background: linear-gradient(rgba(245, 245, 245, 0.7), rgba(44, 62, 80, 0.7)),
+        url("../images/bg_std.png"); */
+    background-repeat: no-repeat;
+    background-size: cover;
+
+
     margin: 0;
     padding: 0;
     font-family: "Bodoni MT", serif;
     overflow-y: scroll;
     caret-color: transparent;
-    font-size: 16px;
+    font-size: 18px;
 }
 
 header {
@@ -23,6 +31,8 @@ header {
     background-image: url("../images/bg_std.png");
     background-repeat: no-repeat;
     background-size: cover;
+
+    border-bottom: #4E195F;
 }
 
 .title {
@@ -39,6 +49,7 @@ header {
 .upper-header {
     display: flex;
     justify-content: center;
+    font-size: 16px;
 }
 
 h2 {
@@ -63,18 +74,19 @@ nav a:hover {
     background-color: #444;
 }
 
-.icon-home {
-    fill: #4E195F;
-}
 
 nav a:hover .icon-home {
     color: unset;
     fill: #1EAEDB;
 }
 
+.icon-home {
+    fill: #4E195F;
+}
+
 .icon-menu {
     fill: #4E195F;
-    vertical-align: -6.5px;
+    vertical-align: -20%;
 }
 
 .container {
@@ -122,7 +134,7 @@ nav a:hover .icon-home {
 }
 
 #exampleMessage {
-    height: 180px;
+    height: 150px;
 }
 
 /* Footer */
@@ -305,6 +317,11 @@ img#KM_lb,
 }
 
 @media screen and (max-width: 480px) {
+
+    #exampleMessage {
+        height: 220px;
+    }
+
     #my-nav nav {
         position: relative;
     }

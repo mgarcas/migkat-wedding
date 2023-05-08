@@ -29,7 +29,12 @@
         {% include 'elements/wrap.html' %}
         {% block header %}{% endblock %}
     </header>
-
+    <!-- <button id="menu-button">Menu</button> -->
+    <!-- <button class="ghost-menu__button"><i class='bx bx-menu'></i></button> -->
+    <button class="ghost-menu__button">
+        <i class='bx bx-menu'></i>
+    </button>
+    {% include 'elements/ghost-menu2.html' %}
     {% block main %}{% endblock %}
 
 
