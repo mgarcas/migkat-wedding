@@ -1,3 +1,5 @@
+{% if lang == 'en'%}
+
 <div class="container-nav">
     <ul class="nav-tabs">
         <li><a href="/"><box-icon class="icon-home" name='home'></box-icon></a></li>
@@ -7,7 +9,18 @@
     </ul>
 </div>
 
+{% else %}
 
+<div class="container-nav">
+    <ul class="nav-tabs">
+        <li><a href="/"><box-icon class="icon-home" name='home'></box-icon></a></li>
+        <li><a href="/es/about">Nosotros</a></li>
+        <li><a href="#">Información</a></li>
+        <li><a href="/es/rsvp">RSVP</a></li>
+    </ul>
+</div>
+
+{% endif %}
 
 <style>
     .container-nav {

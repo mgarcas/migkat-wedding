@@ -26,8 +26,9 @@
             </div>
         </div>
         <h1 class="title">Nuestra Boda</h1>
-
-        {% include 'elements/wrap_es.html' %}
+        {% with lang=lang %}
+            {% include 'elements/wrap.html'%}
+        {% endwith %}
         {% block header %}{% endblock %}
     </header>
 

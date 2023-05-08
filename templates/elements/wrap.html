@@ -1,11 +1,9 @@
-<!-- <nav>
-    <a href="/"><box-icon class="icon-home" name='home'></box-icon></a>
-    <a href="/about">About Us</a>
-    <a href="#">More?</a>
-    <a href="/rsvp">RSVP</a>
-</nav> -->
 
-{% include 'elements/nav-tabs.html' %}
+{% with lang=lang %}
+    {% include 'elements/nav-tabs.html' %}
+{% endwith %}
+
+{% if lang == 'en' %}
 
 <nav id="my-nav">
     <div id="menu-wrap">
@@ -24,6 +22,25 @@
     </div>
 </nav>
 
+{% else %}
+
+<nav id="my-nav">
+    <div id="menu-wrap">
+        <ul id="menu">
+            <li>
+                <a><box-icon class="icon-menu" name='menu'></box-icon> Día de la boda</a>
+                <ul>
+                    <li><a href="#">Alojamiento</a></li>
+                    <li><a href="/es/rehearsal">Cena de bienvenida</a></li>
+                    <li><a href="/es/ceremony">Ceremonia</a></li>
+                    <li><a href="/es/reception">Recepción</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+{% endif %}
 <!-- <div class="button-group">
     <a href="/es" class="button btn-rsvp" onclick="document.cookie='lang=es';location.reload()"
         style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a>

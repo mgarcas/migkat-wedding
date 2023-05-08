@@ -53,18 +53,18 @@ def set_language():
 def main():
     print("##############", g.lang, request.cookies.get('lang'))
     if g.lang == 'en':
-        return render_template('main.html', last_updated=last_updated)
+        return render_template('main.html', last_updated=last_updated, lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/main_es.html', last_updated=last_updated)
+        return render_template('es/main_es.html', last_updated=last_updated, lang=g.lang)
 
 
 @app.route('/es/about')
 @app.route('/about')
 def about():
     if g.lang == 'en':
-        return render_template('about.html')
+        return render_template('about.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/work_in_progress_es.html')
+        return render_template('es/work_in_progress_es.html', lang=g.lang)
 
 
 @app.route('/es/rehearsal')
@@ -80,14 +80,17 @@ def rehearsal():
 @app.route('/es/ceremony')
 def ceremony():
     if g.lang == 'en':
-        return render_template('ceremony.html')
+        return render_template('ceremony.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/work_in_progress_es.html')
+        return render_template('es/work_in_progress_es.html', lang=g.lang)
 
 
 @app.route('/reception')
 def reception():
-    return render_template('reception.html')
+    if g.lang == 'en':
+        return render_template('reception.html', lang=g.lang)
+    elif g.lang == 'es':
+        return render_template('es/work_in_progress_es.html', lang=g.lang)
 
 
 @app.route('/rsvp', methods=['GET', 'POST'])
@@ -106,7 +109,10 @@ def rsvp():
 
 @app.route('/under_construction')
 def under_construction():
-    return render_template('work_in_progress.html')
+    if g.lang == 'en':
+        return render_template('work_in_progress.html', lang=g.lang)
+    elif g.lang == 'es':
+        return render_template('work_in_progress_es.html', lang=g.lang)
 
 
 @app.route('/guests')
@@ -119,11 +125,10 @@ def table():
 
 @app.route('/test')
 def test():
-    # return os.path.join(app.app_context)
     return app.static_folder
 
 
 if __name__ == '__main__':
-    # app.run(debug=True) # online
+    app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    app.run(host='192.168.0.7',  debug=True)  # Providence
+    # app.run(host='192.168.0.7',  debug=True)  # Providence
