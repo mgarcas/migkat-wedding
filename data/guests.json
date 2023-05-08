@@ -18,5 +18,35 @@
     "U21": "yes",
     "Comments": "please, sit us together and add some extra stupid food",
     "Timestamp": "2023-05-03 03:31:28 UTC"
+  },
+  {
+    "Name": "LeBron James",
+    "Email": "pessoafer@mail.com",
+    "Family/Group": "James",
+    "Attending": "yes",
+    "Meal": "meat",
+    "U21": "no",
+    "Comments": "No allergies",
+    "Timestamp": "2023-05-03 04:51:05 UTC"
+  },
+  {
+    "Name": "Jordan Pool",
+    "Email": "pessoafer@mail.com",
+    "Family/Group": "James",
+    "Attending": "yes",
+    "Meal": "meat",
+    "U21": "no",
+    "Comments": "No allergies",
+    "Timestamp": "2023-05-03 04:51:05 UTC"
+  },
+  {
+    "Name": "Maurito Itoito",
+    "Email": "pessoafer@mail.com",
+    "Family/Group": "James",
+    "Attending": "yes",
+    "Meal": "fish",
+    "U21": "no",
+    "Comments": "No allergies",
+    "Timestamp": "2023-05-03 04:51:05 UTC"
   }
 ]
