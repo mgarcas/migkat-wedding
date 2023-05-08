@@ -26,12 +26,13 @@
             </div>
         </div>
         <h1 class="title">Our Wedding</h1>
-        {% include 'elements/wrap.html' %}
+        {% with lang=lang %}
+            {% include 'elements/wrap.html'%}
+        {% endwith %}
         {% block header %}{% endblock %}
     </header>
 
     {% block main %}{% endblock %}
-
 
     <footer>
         {% block footer %}{% endblock %}
