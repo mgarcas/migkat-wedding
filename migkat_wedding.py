@@ -71,9 +71,9 @@ def about():
 @app.route('/rehearsal')
 def rehearsal():
     if g.lang == 'en':
-        return render_template('rehearsal.html')
+        return render_template('rehearsal.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/work_in_progress_es.html')
+        return redirect('/es/under_construction')
 
 
 @app.route('/ceremony')
@@ -104,15 +104,15 @@ def rsvp():
         else:
             return redirect('/under_construction')
     else:
-        return render_template('rsvp.html')
+        return render_template('rsvp.html', lang=g.lang)
 
-
+@app.route('/es/under_construction')
 @app.route('/under_construction')
 def under_construction():
     if g.lang == 'en':
         return render_template('work_in_progress.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('work_in_progress_es.html', lang=g.lang)
+        return render_template('es/work_in_progress_es.html', lang=g.lang)
 
 
 @app.route('/guests')
@@ -120,7 +120,7 @@ def table():
     path = os.path.join(app.root_path, 'data', 'guests.json')
     with open(path, 'r') as file:
         data = json.load(file)
-    return render_template('guests.html', data=data)
+    return render_template('guests.html', data=data, lang=g.lang)
 
 
 @app.route('/test')
@@ -129,6 +129,6 @@ def test():
 
 
 if __name__ == '__main__':
-    app.run(debug=True) # online
+    # app.run(debug=True) # online
     # app.run(host='192.168.1.59',  debug=True) # Binghamton
-    # app.run(host='192.168.0.7',  debug=True)  # Providence
+    app.run(host='192.168.0.7',  debug=True)  # Providence

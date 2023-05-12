@@ -23,6 +23,9 @@ function addGuests() {
         // Create a new row
         const row = document.createElement("div");
         row.classList.add("row");
+        const rowAllergies = document.createElement("div");
+        rowAllergies.classList.add("row");
+        rowAllergies.setAttribute('id', "row-allergies-" + i);
         // row.style = "display: flex; align-items: center;";
 
         // Create a new columns
@@ -31,17 +34,22 @@ function addGuests() {
         const column_meal = document.createElement("div");
         column_meal.classList.add("four", "columns", "c-left");
         const column_age = document.createElement("div");
-        column_age.classList.add("three", "columns", "c-left");
+        column_age.classList.add("two", "columns", "c-left");
+        const column_allergies = document.createElement("div");
+        column_allergies.classList.add("three", "columns", "c-left");
 
         row.appendChild(column_guest);
         row.appendChild(column_meal);
         row.appendChild(column_age);
+        rowAllergies.appendChild(column_allergies);
         mealPreferences.appendChild(row);
+        mealPreferences.appendChild(rowAllergies);
         mealPreferences.appendChild(document.createElement("hr"));
 
         generateGuest(column_guest, i);
         generateMeal(column_meal, i);
         generateAge(column_age, i);
+        generateAllergies(column_allergies, i)
     }
 }
 
@@ -54,7 +62,7 @@ function generateGuest(column, i) {
 
     label.htmlFor = "guest-name-" + i;
     label.style.textAlign = "left"
-    label.innerHTML = "Guest #" + (i + 1) + " name";
+    label.innerHTML = "Guest #" + (i + 1) + " Name";
 
     input.type = "text";
     input.name = "guest-name-" + i;
@@ -140,6 +148,63 @@ function generateAge(column, i) {
     column.appendChild(label);
 }
 
+function generateAllergies(column, i) {
+    var label = document.createElement("label");
+    var allergiesCheckbox = document.createElement("input");
+    var span = document.createElement("span");
+    var placeHolder = document.createElement("label")
+
+    allergiesCheckbox.type = "checkbox";
+    allergiesCheckbox.name = "guest-allergies-" + i;
+    allergiesCheckbox.id = "guest-allergies-" + i;
+
+    span.classList.add("label-body");
+    span.innerHTML = "Food allergies?";
+    placeHolder.id = "checkbox-placeholder";
+    placeHolder.innerHTML = "&nbsp;"
+    // placeHolder.style = "height: 20px; position: relative; top: -10px; margin-bottom: 15px";
+
+    label.classList.add = "c-left";
+
+    label.appendChild(allergiesCheckbox);
+    label.appendChild(span);
+
+    column.appendChild(placeHolder);
+    column.appendChild(label);
+
+    allergiesCheckbox.onchange = function () {
+        // code to be executed when the checkbox is checked or unchecked
+        if (allergiesCheckbox.checked) {
+
+            console.log("clicked! number " + i)
+            const row = document.getElementById("row-allergies-" + i);
+            const column = document.createElement("div");
+            column.setAttribute("id","col-" + i)
+            column.classList.add("six", "columns", "c-left");
+
+            var label = document.createElement("label");
+            var input = document.createElement("input");
+
+            label.htmlFor = "guest-comment-" + i;
+            label.style.textAlign = "left"
+            label.innerHTML = "Guest #" + (i + 1) + " comment";
+
+            input.type = "text";
+            input.name = "guest-comment-" + i;
+            input.className = "u-full-width rsvp";
+            input.id = "guest-comment-" + i;
+            input.placeholder = "Please specify food allergies"
+
+            column.appendChild(label)
+            column.appendChild(input)
+            row.appendChild(column)
+        } else {
+            const col = document.getElementById("col-" + i);
+            col.remove();
+        }
+    }
+}
+
 
 
 function toggleSelectGuests() {
@@ -191,6 +256,14 @@ window.addEventListener('load', function () {
         }
     });
 });
+
+
+
+// var checkbox = document.getElementById('guest-allergies-0');
+// checkbox.onchange = function() {
+//   // code to be executed when the checkbox is checked or unchecked
+//   console.log("clicked!")
+// }
 
 // document.addEventListener('DOMContentLoaded', () => {
 //     const form = document.querySelector('#formRSVP');

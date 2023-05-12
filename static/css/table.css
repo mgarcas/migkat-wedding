@@ -1,3 +1,7 @@
+#table-guests {
+    font-size: 14px;
+}
+
 .adjusted {
     white-space: nowrap;
     width: auto;
@@ -30,12 +34,15 @@ table th {
 } */
 
 table th {
-    background-color: #f1f8ff;
+    background-color: #C1FCF5;
 }
 
 /* zebra stripes */
 tr:nth-child(even) {
     background-color: #f6f6f6;
+}
+tr:nth-child(odd) {
+    background-color: #E8D5B5;
 }
 
 /* hover effect */
