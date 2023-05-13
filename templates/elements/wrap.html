@@ -1,6 +1,5 @@
-
 {% with lang=lang %}
-    {% include 'elements/nav-tabs.html' %}
+{% include 'elements/nav-tabs.html' %}
 {% endwith %}
 
 {% if lang == 'en' %}
@@ -9,7 +8,7 @@
     <div id="menu-wrap">
         <ul id="menu">
             <li>
-                <a><box-icon class="icon-menu" name='menu'></box-icon> Wedding Day</a>
+                <a><box-icon class="icon-menu" name='menu'></box-icon> Wedding Information</a>
                 <ul>
                     <li><a href="#">Accomodation</a></li>
                     <li><a href="/rehearsal">Welcome Dinner</a></li>
@@ -28,7 +27,7 @@
     <div id="menu-wrap">
         <ul id="menu">
             <li>
-                <a><box-icon class="icon-menu" name='menu'></box-icon> Día de la boda</a>
+                <a><box-icon class="icon-menu" name='menu'></box-icon> Información de la boda</a>
                 <ul>
                     <li><a href="#">Alojamiento</a></li>
                     <li><a href="/es/rehearsal">Cena de bienvenida</a></li>
@@ -41,16 +40,3 @@
 </nav>
 
 {% endif %}
-<!-- <div class="button-group">
-    <a href="/es" class="button btn-rsvp" onclick="document.cookie='lang=es';location.reload()"
-        style="font-weight: bold; color:#4E195F; border-width: 3px; border-style: groove;">Español</a>
-</div> -->
-
-<script>
-    window.addEventListener("load", function () {
-        var liActive = document.querySelector("#menu li");
-        if (liActive.classList.contains("active")) {
-            liActive.classList.remove("active")
-        }
-    });
-</script>

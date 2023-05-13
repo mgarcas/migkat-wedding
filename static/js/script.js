@@ -1,3 +1,17 @@
+window.addEventListener("load", function () {
+    var liActive = document.querySelector("#menu li");
+    if (liActive.classList.contains("active")) {
+        liActive.classList.remove("active");
+    }
+
+    document.querySelector("#menu > li > a").addEventListener("click", function (e) {
+        e.preventDefault();
+        var submenu = this.parentNode.querySelector("ul");
+        submenu.classList.toggle("active");
+    });
+});
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const panels = document.querySelectorAll(".panel");

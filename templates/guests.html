@@ -10,31 +10,36 @@
 {% block main %}
 <div class="container">
     <h2>Guests answers</h2>
-
-    <table id="table-guests" class="u-full-width">
-        <thead>
-            <tr>
-                {% for key in data[0].keys() %}
-                <th>{{ key }}</th>
+</div>
+<div class="row" style="padding: 1rem;">
+    <div class="twelve columns">
+        <table id="table-guests" class="u-full-width">
+            <thead>
+                <tr>
+                    {% for key in data[0].keys() %}
+                    <th>{{ key }}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in data %}
+                <tr>
+                    {% for value in row.values() %}
+                    <td>{{ value }}</td>
+                    {% endfor %}
+                </tr>
                 {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in data %}
-            <tr>
-                {% for value in row.values() %}
-                <td>{{ value }}</td>
-                {% endfor %}
-            </tr>
-            {% endfor %}
-        </tbody>
-        <tfoot>
+            </tbody>
+            <!-- <tfoot>
             <tr>
                 <td>no foot</td>
             </tr>
-        </tfoot>
-    </table>
-
+        </tfoot> -->
+        </table>
+    </div>
+</div>
+<div class="container">
+    <a href="/table" class="button button-primary">Pandas table</a>
 </div>
 
 {% endblock %}

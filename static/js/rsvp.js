@@ -36,7 +36,7 @@ function addGuests() {
         const column_age = document.createElement("div");
         column_age.classList.add("two", "columns", "c-left");
         const column_allergies = document.createElement("div");
-        column_allergies.classList.add("three", "columns", "c-left");
+        column_allergies.classList.add("four", "columns", "c-left");
 
         row.appendChild(column_guest);
         row.appendChild(column_meal);
@@ -193,7 +193,7 @@ function generateAllergies(column, i) {
             input.name = "guest-comment-" + i;
             input.className = "u-full-width rsvp";
             input.id = "guest-comment-" + i;
-            input.placeholder = "Please specify food allergies"
+            input.placeholder = "Please specify food allergies, intolerances, etc."
 
             column.appendChild(label)
             column.appendChild(input)

@@ -1,72 +1,62 @@
 [
   {
-    "Name": "Kitty Garc\u00eda Tezanos",
+    "Name": "Kitty Tezanos Garc\u00eda",
     "Email": "gatiqui@meaw.cat",
-    "Family/Group": "Garc\u00eda Tezanos",
+    "Family/Group": "Tezanos Garc\u00eda",
     "Attending": "yes",
     "Meal": "meat",
     "U21": "no",
-    "Comments": "please, sit us together and add some extra stupid food",
-    "Timestamp": "2023-05-03 03:31:28 UTC"
+    "Allergies": "yes",
+    "Allergies Comment": "Just stupid food",
+    "Message": "Please sit us together.\r\nbox-icon name='right-arrow-alt' color='#ffffff' ></box-icon>\r\nLa Corte de Arbitraje de la C\u00e1mara de Comercio de Par\u00eds (CCI) desestima la demanda que present\u00f3 el club blanco en 2018",
+    "Timestamp": "2023-05-13 03:35:56 UTC"
   },
   {
     "Name": "Georgie Sam",
     "Email": "gatiqui@meaw.cat",
-    "Family/Group": "Garc\u00eda Tezanos",
+    "Family/Group": "Tezanos Garc\u00eda",
     "Attending": "yes",
-    "Meal": "vegan",
+    "Meal": "fish",
+    "U21": "no",
+    "Allergies": "no",
+    "Allergies Comment": "",
+    "Message": "Please sit us together.\r\nbox-icon name='right-arrow-alt' color='#ffffff' ></box-icon>\r\nLa Corte de Arbitraje de la C\u00e1mara de Comercio de Par\u00eds (CCI) desestima la demanda que present\u00f3 el club blanco en 2018",
+    "Timestamp": "2023-05-13 03:35:56 UTC"
+  },
+  {
+    "Name": "Kitty for Kitty",
+    "Email": "gatiqui@meaw.cat",
+    "Family/Group": "Tezanos Garc\u00eda",
+    "Attending": "yes",
+    "Meal": "children",
     "U21": "yes",
-    "Comments": "please, sit us together and add some extra stupid food",
-    "Timestamp": "2023-05-03 03:31:28 UTC"
+    "Allergies": "no",
+    "Allergies Comment": "",
+    "Message": "Please sit us together.\r\nbox-icon name='right-arrow-alt' color='#ffffff' ></box-icon>\r\nLa Corte de Arbitraje de la C\u00e1mara de Comercio de Par\u00eds (CCI) desestima la demanda que present\u00f3 el club blanco en 2018",
+    "Timestamp": "2023-05-13 03:35:56 UTC"
   },
   {
-    "Name": "LeBron James",
-    "Email": "pessoafer@mail.com",
-    "Family/Group": "James",
+    "Name": "Miguel Garc\u00eda Casta\u00f1o",
+    "Email": "miggarcia90@gmail.com",
+    "Family/Group": "Garc\u00eda Casta\u00f1o",
     "Attending": "yes",
     "Meal": "meat",
     "U21": "no",
-    "Comments": "No allergies",
-    "Timestamp": "2023-05-03 04:51:05 UTC"
+    "Allergies": "no",
+    "Allergies Comment": "",
+    "Message": "",
+    "Timestamp": "2023-05-13 04:31:35 UTC"
   },
   {
-    "Name": "Jordan Pool",
-    "Email": "pessoafer@mail.com",
-    "Family/Group": "James",
-    "Attending": "yes",
-    "Meal": "meat",
-    "U21": "no",
-    "Comments": "No allergies",
-    "Timestamp": "2023-05-03 04:51:05 UTC"
-  },
-  {
-    "Name": "Maurito Itoito",
-    "Email": "pessoafer@mail.com",
-    "Family/Group": "James",
+    "Name": "Katherine Tezanos",
+    "Email": "migkat23@gmail.com",
+    "Family/Group": "Tezanos",
     "Attending": "yes",
     "Meal": "fish",
     "U21": "no",
-    "Comments": "No allergies",
-    "Timestamp": "2023-05-03 04:51:05 UTC"
-  },
-  {
-    "Name": "Christian Pulisic",
-    "Email": "soccer@usa.com",
-    "Family/Group": "Pulisic",
-    "Attending": "yes",
-    "Meal": "fish",
-    "U21": "no",
-    "Comments": "Miami leads the series 3-1.\r\nThey will play game five in New York",
-    "Timestamp": "2023-05-09 03:22:48 UTC"
-  },
-  {
-    "Name": "Jimmy Butler",
-    "Email": "soccer@usa.com",
-    "Family/Group": "Pulisic",
-    "Attending": "yes",
-    "Meal": "meat",
-    "U21": "no",
-    "Comments": "Miami leads the series 3-1.\r\nThey will play game five in New York",
-    "Timestamp": "2023-05-09 03:22:48 UTC"
+    "Allergies": "no",
+    "Allergies Comment": "",
+    "Message": "Amorcito",
+    "Timestamp": "2023-05-13 04:32:04 UTC"
   }
 ]

@@ -2,6 +2,7 @@ import datetime
 import json
 import os
 from flask import Flask, g, redirect, render_template, request
+import pandas as pd
 import get_data_guests
 
 app = Flask(__name__)
@@ -106,6 +107,7 @@ def rsvp():
     else:
         return render_template('rsvp.html', lang=g.lang)
 
+
 @app.route('/es/under_construction')
 @app.route('/under_construction')
 def under_construction():
@@ -121,6 +123,13 @@ def table():
     with open(path, 'r') as file:
         data = json.load(file)
     return render_template('guests.html', data=data, lang=g.lang)
+
+
+@app.route('/table')
+def pandas_table():
+    path = os.path.join(app.root_path, 'data', 'guests.json')
+    df = pd.read_json(path)
+    return render_template('pandas_table.html', data=df.to_html())
 
 
 @app.route('/test')

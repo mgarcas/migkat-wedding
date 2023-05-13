@@ -4,7 +4,7 @@ import json
 
 
 
-columns = ['Name', 'Email','Family/Group','Attending','Meal','U21','Comments','Timestamp']
+columns = ['Name', 'Email','Family/Group','Attending','Meal','U21','Allergies','Allergies Comment','Message','Timestamp']
 
 def getData(rsvp):
 
@@ -20,6 +20,8 @@ def getData(rsvp):
         row.append(rsvp['attending'])
         row.append(rsvp['guest-meal-{}'.format(i)])
         row.append("yes" if ('guest-u21-{}'.format(i) in list(rsvp.keys())) else "no")
+        row.append("yes" if ('guest-allergies-{}'.format(i) in list(rsvp.keys())) else "no")
+        row.append(rsvp['guest-comment-{}'.format(i)] if ('guest-comment-{}'.format(i) in list(rsvp.keys())) else '')
         row.append(rsvp['message'])
         row.append(timestamp)
 
@@ -42,11 +44,6 @@ def dumpToJson(data, path):
     
     with open(path, 'w') as outfile:
         json.dump(file_json, outfile, indent=2)
-
-
-def loadData():
-
-    return "m"
 
 
 
