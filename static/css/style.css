@@ -7,7 +7,6 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
 
-
     margin: 0;
     padding: 0;
     font-family: "Bodoni MT", serif;
@@ -435,4 +434,44 @@ body::-webkit-scrollbar-track {
     padding: 1rem;
     max-height: 500px;
     transition: max-height 0.2s ease;
+}
+
+
+
+/* Small header */
+
+#small-header {
+    display: inline-flex;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    background-image: url("../images/bg_std.png");
+    z-index: 1;
+    display: none;
+    margin-top: -10px;
+}
+
+#small-header .logo img {
+    height: 65px;
+}
+
+#small-header .icon-menu {
+    vertical-align: -26%;
+}
+
+@media screen and (max-width: 480px) {
+    #small-header {
+        margin-top: -10px;
+    }
+
+    #small-header .logo img {
+        height: 50px;
+    }
+
+    #small-header #my-nav {
+        font-size: 80%;
+    }
 }

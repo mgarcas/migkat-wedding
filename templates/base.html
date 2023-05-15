@@ -27,10 +27,11 @@
         </div>
         <!-- <h1 class="title">08·12·2023 - Providence, RI</h1> -->
         {% with lang=lang %}
-            {% include 'elements/wrap.html'%}
+        {% include 'elements/wrap.html'%}
         {% endwith %}
         {% block header %}{% endblock %}
     </header>
+    {% include 'elements/small-header.html'%}
 
     {% block main %}{% endblock %}
 
@@ -56,14 +57,6 @@
     </footer>
 
 
-    <script>
-        window.addEventListener('load', function () {
-            const header = document.getElementById('main-header');
-            const styles = window.getComputedStyle(header);
-            const original = styles.getPropertyValue('height');
-            header.style.height = original;
-        });
-    </script>
     {% block scripts %}{% endblock %}
 
 

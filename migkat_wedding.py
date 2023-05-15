@@ -93,6 +93,14 @@ def reception():
     elif g.lang == 'es':
         return render_template('es/work_in_progress_es.html', lang=g.lang)
 
+@app.route('/es/accomodation')
+@app.route('/accomodation')
+def accomodation():
+    if g.lang == 'en':
+        return render_template('accomodation.html', lang=g.lang)
+    elif g.lang == 'es':
+        return render_template('es/work_in_progress_es.html', lang=g.lang)
+
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():

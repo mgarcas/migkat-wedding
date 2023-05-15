@@ -12,19 +12,31 @@
     </div>
 
 
-    <div class="row" style="text-align: left;">
+    <div class="row c-left">
         <div class="six columns">
             <h4>Date and Time</h4>
-            <p>September 10, 2023 at 6:00pm</p>
+            <p>August 12, 2023 at 5:00pm</p>
 
             <h4>Location</h4>
-            The Grand Ballroom<br>
-            123 Main St<br>
-            Anytown, USA</p>
+            The Casino at Roger Williams Park<br>
+            Providence, RI<br>
+            <box-icon name='map' class="icon"></box-icon> Entrance to the park at Elmwood Street<br>
+            <a href="#map">See map bellow</a><br></p>
 
-            <h4>Dress Code</h4>
-            <p>Semi-formal attire is requested.</p>
+            <h4>Parking</h4>
+            <p>Free public parking lot available adjacent to the venue </p>
+            
+            <h4>Accesibility</h4>
+            <p>Accessible to people with mobility difficulties. Elevator inside the building</p>
 
+        </div>
+        <div class="six columns">
+            <img src="{{ url_for('static', filename='images/IMG_5908_rwpc.jpg') }}" alt="Roger-Williams-Park-Casino"
+                class="u-max-full-width" style="padding: 10px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
             <h4>Menu</h4>
             <p>Our delicious menu will feature:</p>
             <ul>
@@ -36,13 +48,27 @@
             </ul>
         </div>
     </div>
+    <div style="width: 100%; height: 400px" id="map">
+        <!-- <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-71.41956567764284%2C41.78334306156863%2C-71.41657233238222%2C41.784475075405794&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/><small><a href="https://www.openstreetmap.org/#map=19/41.78391/-71.41807">Ver mapa más grande</a></small> -->
 
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1487.5237473618133!2d-71.41853315137215!3d41.78419006501631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e44f979a12314d%3A0x655fa32ff485643d!2sRoger%20Williams%20Park%20Casino!5e0!3m2!1ses!2sus!4v1684092968589!5m2!1ses!2sus"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <img src="{{ url_for('static', filename='images/IMG_5908_rwpc_us.jpg') }}" alt="Roger-Williams-Park-Casino-Us"
+                class="u-max-full-width" style="padding: 10px;">
+        </div>
+    </div>
     <!-- add any additional information here -->
 
-    <aside>
+    <!-- <aside>
         <p>que se hace aqui</p>
-        <!-- add a picture or any other content for the sidebar here -->
-    </aside>
+        add a picture or any other content for the sidebar here
+    </aside> -->
 </div>
 
 {% endblock %}
