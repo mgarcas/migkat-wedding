@@ -58,3 +58,39 @@ window.onload = function () {
         }
     });
 }
+
+
+// JavaScript code for tab switching
+function handleTabClick(e) {
+    e.preventDefault();
+    var target = e.target.getAttribute('href');
+
+    // Remove active class from all tabs and tab contents
+    var tabLinks = document.querySelectorAll('.hotel-tabs a');
+    for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].classList.remove('active');
+    }
+
+    var tabContents = document.querySelectorAll('.tab-content');
+    for (var j = 0; j < tabContents.length; j++) {
+        tabContents[j].classList.remove('active');
+    }
+
+    // Add active class to the clicked tab and corresponding tab content
+    e.target.classList.add('active');
+    document.querySelector(target).classList.add('active');
+}
+
+// Attach event listeners to tab links
+document.addEventListener('DOMContentLoaded', function () {
+    var tabLinks = document.querySelectorAll('.hotel-tabs a');
+    for (var i = 0; i < tabLinks.length; i++) {
+        tabLinks[i].addEventListener('click', handleTabClick);
+    }
+
+    // Hide all tab contents initially
+    var tabContents = document.querySelectorAll('.tab-content');
+    for (var j = 0; j < tabContents.length; j++) {
+        tabContents[j].classList.remove('active');
+    }
+});

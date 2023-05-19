@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <header id="main-header-es">
+    <header id="main-header">
         <div class="row u-full-width upper-header">
             <div class="one-third column">
                 <nav><a href="/" class="u-pull-left" style="word-spacing: -2.5px;"
@@ -31,7 +31,9 @@
         {% endwith %}
         {% block header %}{% endblock %}
     </header>
-
+    {% with lang=lang %}
+        {% include 'elements/small-header.html'%}
+    {% endwith %}
 
     {% block main %}{% endblock %}
 
@@ -44,7 +46,7 @@
                     123-456-7890 (Katherine) <br> 123-456-7890 (Miguel)
                 </p>
             </section>
-            <p>&copy; 2023 Our Wedding</p>
+            <p><box-icon name='anchor' color='#c6c6c6'></box-icon></p>
         </div>
         <blockquote style="text-align: center;">
             "Love is patient, love is kind. It does not envy, it does not boast, it is not proud. It does not dishonor
@@ -56,14 +58,14 @@
     </footer>
 
 
-    <script>
+    <!-- <script>
         window.addEventListener('load', function () {
             const header = document.getElementById('main-header-es');
             const styles = window.getComputedStyle(header);
             const original = styles.getPropertyValue('height');
             header.style.height = original;
         });
-    </script>
+    </script> -->
     {% block scripts %}{% endblock %}
 
     {% block modals %}{% endblock %}

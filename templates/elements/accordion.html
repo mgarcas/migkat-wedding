@@ -1,3 +1,5 @@
+{% if lang == 'en' %}
+
 <div class="accordion">
     <div class="panel">
         <div class="panel-header">
@@ -7,9 +9,9 @@
         <div class="panel-content">
             <div class="row">
                 <div class="twelve columns c-left">
-                    <p><a href="/rehearsal"><box-icon name='beer' class="icon"></box-icon>Welcome dinner</a> at Narraganset Brewery: Friday 7.00pm</p>
-                    <p><a href="/ceremony"><box-icon name='church' class="icon"></box-icon>Ceremony</a> at St. Sebastian Catholic Church: Saturday 3.00pm</p>
-                    <p><a href="/reception"><box-icon name='party' class="icon"></box-icon>Reception</a> at Roger Williams Park Casino: Saturday 5.00pm</p>
+                    <p><box-icon name='beer' class="icon"></box-icon> <a href="/rehearsal">Welcome dinner</a> at Narraganset Brewery: Friday 7.00pm</p>
+                    <p><box-icon name='church' class="icon"></box-icon> <a href="/ceremony">Ceremony</a> at St. Sebastian Catholic Church: Saturday 3.00pm</p>
+                    <p><box-icon name='party' class="icon"></box-icon> <a href="/reception">Reception</a> at Roger Williams Park Casino: Saturday 5.00pm</p>
                 </div>
             </div>
         </div>
@@ -47,3 +49,57 @@
         </div>
     </div>
 </div>
+
+{% else %}
+
+<div class="accordion">
+    <div class="panel">
+        <div class="panel-header">
+            <h5>Programa</h5>
+            <box-icon class="panel-arrow" name='chevron-right' color="#fff"></box-icon>
+        </div>
+        <div class="panel-content">
+            <div class="row">
+                <div class="twelve columns c-left">
+                    <p><box-icon name='beer' class="icon"></box-icon> <a href="/es/rehearsal">Cena de bienvenida</a> en Narraganset Brewery: viernes 19.00</p>
+                    <p><box-icon name='church' class="icon"></box-icon> <a href="/es/ceremony">Ceremonia</a> en la iglesia católica de St. Sebastian: sábado 14.30</p>
+                    <p><box-icon name='party' class="icon"></box-icon> <a href="/es/reception">Recepción</a> en el Casino del Parque Roger Williams: sábado 17.00</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header">
+            <h5>Transporte y alojamiento</h5>
+            <box-icon class="panel-arrow" name='chevron-right' color="#fff"></box-icon>
+        </div>
+        <div class="panel-content">
+            <div class="row">
+                <div class="twelve columns c-left">
+                    <p><box-icon name='bus' class="icon"></box-icon> Habrá un servicio de autobús entre el centro de la ciudad, la iglesia y el lugar de la recepción</p>
+                    <p><box-icon name='hotel' class="icon"></box-icon> Para información sobre alojamiento </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header">
+            <h5>Cuarto de hospitalidad</h5>
+            <box-icon class="panel-arrow" name='chevron-right' color="#fff"></box-icon>
+        </div>
+        <div class="panel-content">
+            <p>Content 3</p>
+        </div>
+    </div>
+    <div class="panel">
+        <div class="panel-header">
+            <h5>Other</h5>
+            <box-icon class="panel-arrow" name='chevron-right' color="#fff"></box-icon>
+        </div>
+        <div class="panel-content">
+            <p>Content 3</p>
+        </div>
+    </div>
+</div>
+
+{% endif %}
