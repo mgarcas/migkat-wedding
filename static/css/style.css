@@ -383,6 +383,13 @@ img#KM_lb,
         display: block;
         text-align: center;
     }
+
+    #menu a {
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+    }
 }
 
 /* Scrollbar */
@@ -455,6 +462,16 @@ body::-webkit-scrollbar-track {
     padding: 1rem;
 }
 
+.text-acc {
+    margin-bottom: 0px;
+}
+
+.date-acc {
+    font-variant: small-caps;
+    font-size: 20px;
+    font-weight: bold;
+}
+
 
 
 /* Small header */
@@ -471,6 +488,11 @@ body::-webkit-scrollbar-track {
     z-index: 1;
     display: none;
     margin-top: -10px;
+    pointer-events: stroke;
+}
+
+#small-header .logo {
+    margin: 0px;
 }
 
 #small-header .logo img {
@@ -480,6 +502,21 @@ body::-webkit-scrollbar-track {
 #small-header .icon-menu {
     vertical-align: -26%;
 }
+
+#small-header #menu>li:focus-within,
+#small-header #menu>li:hover>a {
+    border: 2px solid #c6c6c6;
+}
+
+#small-header #menu li ul li>a {
+    border-left: 2px solid #c6c6c6;
+    border-right: 2px solid #c6c6c6;
+}
+
+#small-header #menu li ul li:last-child a {
+    border-bottom: 2px solid #c6c6c6;
+}
+
 
 @media screen and (max-width: 480px) {
     #small-header {
@@ -498,10 +535,15 @@ body::-webkit-scrollbar-track {
 
 /* Tabs */
 
+.hotel-tabs-container {
+    overflow-x: auto;
+    display: grid;
+}
+
 .hotel-tabs {
     display: flex;
     max-width: 100%;
-    overflow-x: auto;
+    /* overflow-x: auto; */
     justify-content: center;
     list-style: none;
     padding: 0;
@@ -518,17 +560,6 @@ body::-webkit-scrollbar-track {
     margin-right: 0;
 }
 
-/* .hotel-tabs a {
-    display: block;
-    padding: 10px 20px;
-    text-decoration: none;
-    color: #4E195F;
-    font-weight: bold;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-bottom: none;
-    border-radius: 5px 5px 0 0;
-} */
 .hotel-tabs a {
     display: flex;
     padding: 10px 20px;
@@ -539,7 +570,7 @@ body::-webkit-scrollbar-track {
     border: 1px solid #ccc;
     border-bottom: none;
     border-radius: 5px 5px 0 0;
-    height: 80%;
+    height: 70%;
     align-items: center;
     justify-content: center;
 }

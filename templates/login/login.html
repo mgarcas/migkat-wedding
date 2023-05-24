@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Wedding K&M - Work in progress{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <div class="row">
+            <div class="six columns">
+                <label for="username">Username</label>
+                <input class="u-full-width" type="text" id="username" name="username" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <label for="password">Password</label>
+                <input class="u-full-width" type="password" id="password" name="password" required>
+            </div>
+        </div>
+        <div class="row">
+            <div class="six columns">
+                <input class="button-primary" type="submit" value="Login">
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="twelve columns">
+            {{ error }}
+        </div>
+    </div>
+</div>
+{% endblock %}
