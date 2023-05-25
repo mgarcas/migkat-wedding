@@ -78,20 +78,15 @@
                 </div>
             </div>
         </div>
-        <label class="example-send-yourself-copy">
+        <!-- <label class="example-send-yourself-copy">
             <input type="checkbox">
             <span class="label-body">Send a copy to yourself</span>
-        </label>
+        </label> -->
         <div class="button-group">
             <input class="button-primary btn-rsvp" type="submit" value="Submit">
-            <button class="button btn-rsvp clear-btn" onclick="resetForm('formRSVP')">
-                Clear Form
-            </button>
+            <button class="button btn-rsvp clear-btn" onclick="resetForm('formRSVP')">Clear Form</button>
         </div>
     </form>
-    <div class="row" hidden="true">
-
-    </div>
 </div>
 
 {% endblock %}
@@ -100,31 +95,5 @@
 
 
 {% block modals %}
-<div class="modal" id="modal-menu">
-    <div class="container modal-content">
-        <span class="close-menu">&times;</span>
-        <h2>Menu</h2>
-        <div class="row">
-            <div class="three columns">
-                <h5 style="text-decoration: underline;">Meat</h5>
-                <ul class="c-left">
-                    <li>Una cosa</li>
-                    <li>Y otra</li>
-                    <li>Y otra más</li>
-                </ul>
-            </div>
-            <div class="three columns">
-                <h5>Fish</h5>
-            </div>
-            <div class="three columns">
-                <h5>Vegan</h5>
-            </div>
-            <div class="three columns">
-                <h5>Child Menu</h5>
-            </div>
-        </div>
-        <p>menu</p>
-        <p>menu menu</p>
-    </div>
-</div>
+{% include 'modals/menu.html' %}
 {% endblock %}

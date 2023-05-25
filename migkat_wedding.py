@@ -1,3 +1,4 @@
+from models.user import User
 import datetime
 import json
 import os
@@ -19,8 +20,6 @@ login_manager.init_app(app)
 login_manager.session_protection = "strong"
 login_manager.login_view = 'login'  # type: ignore
 
-
-from models.user import User
 
 path_users = os.path.join(app.root_path, 'models', 'users.json')
 
@@ -79,12 +78,32 @@ def login():
             return render_template('login/login.html', error='Invalid username or password')
     return render_template('login/login.html', lang=g.lang)
 
+
 @app.route('/admin')
 @login_required
 def admin():
     return render_template('login/admin.html', lang=g.lang)
 
+
+@app.route('/guests')
+@login_required
+def table():
+    path = os.path.join(app.root_path, 'data', 'guests.json')
+    with open(path, 'r') as file:
+        data = json.load(file)
+    return render_template('login/guests.html', data=data, lang=g.lang)
+
+
+@app.route('/table')
+@login_required
+def pandas_table():
+    path = os.path.join(app.root_path, 'data', 'guests.json')
+    df = pd.read_json(path)
+    return render_template('login/pandas_table.html', data=df.to_html())
+
 # Logout user
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -158,8 +177,8 @@ def rehearsal():
         return redirect('/es/under_construction')
 
 
-@app.route('/ceremony')
 @app.route('/es/ceremony')
+@app.route('/ceremony')
 def ceremony():
     if g.lang == 'en':
         return render_template('ceremony.html', lang=g.lang)
@@ -167,12 +186,13 @@ def ceremony():
         return render_template('es/work_in_progress_es.html', lang=g.lang)
 
 
+@app.route('/es/reception')
 @app.route('/reception')
 def reception():
     if g.lang == 'en':
         return render_template('reception.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/work_in_progress_es.html', lang=g.lang)
+        return redirect('/es/under_construction')
 
 
 @app.route('/es/accomodation')
@@ -184,18 +204,22 @@ def accomodation():
         return render_template('es/work_in_progress_es.html', lang=g.lang)
 
 
+@app.route('/es/rsvp', methods=['GET', 'POST'])
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
-    if request.method == 'POST':
+    if g.lang == 'en':
+        if request.method == 'POST':
 
-        attending, name = getForm()
+            attending, name = getForm()
 
-        if attending:
-            return render_template('confirmation.html', name=name, lang=g.lang)
+            if attending:
+                return render_template('confirmation.html', name=name, lang=g.lang)
+            else:
+                return redirect('/under_construction')
         else:
-            return redirect('/under_construction')
-    else:
-        return render_template('rsvp.html', lang=g.lang)
+            return render_template('rsvp.html', lang=g.lang)
+    elif g.lang == 'es':
+        return redirect('/es/under_construction')
 
 
 @app.route('/es/under_construction')
@@ -205,23 +229,6 @@ def under_construction():
         return render_template('work_in_progress.html', lang=g.lang)
     elif g.lang == 'es':
         return render_template('es/work_in_progress_es.html', lang=g.lang)
-
-
-@app.route('/guests')
-@login_required
-def table():
-    path = os.path.join(app.root_path, 'data', 'guests.json')
-    with open(path, 'r') as file:
-        data = json.load(file)
-    return render_template('guests.html', data=data, lang=g.lang)
-
-
-@app.route('/table')
-@login_required
-def pandas_table():
-    path = os.path.join(app.root_path, 'data', 'guests.json')
-    df = pd.read_json(path)
-    return render_template('pandas_table.html', data=df.to_html())
 
 
 @app.route('/test')

@@ -15,17 +15,18 @@
                         onclick="document.cookie='lang=es';location.reload()"><u>EN</u> | ES</a></nav>
             </div>
             <div class="one-third column upper-header">
-                <div class="logo">
+                <!-- <div class="logo">
                     <a href="/">
                         <img src="{{ url_for('static', filename='images/logoKM.png') }}" alt="Logo">
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="one-third column">
                 <nav><a class="mano modal-btn u-pull-right">Contact Us</a></nav>
             </div>
         </div>
-        <!-- <h1 class="title">08·12·2023 - Providence, RI</h1> -->
+        <h1 class="title" style="font-size: 40px;">Katherine & Miguel</h1>
+        <h1 class="title" style="font-size: 30px;">08·12·2023</h1>
         {% with lang=lang %}
         {% include 'elements/wrap.html'%}
         {% endwith %}
@@ -41,8 +42,8 @@
         <div class="footer-info">
             <section id="contact">
                 <p><strong>Contact us:</strong><br>
-                    <a href="mailto:contact@ourwedding.com">contact@ourwedding.com</a><br>
-                    123-456-7890 (Katherine) <br> 123-456-7890 (Miguel)
+                    <a href="mailto:migkat23@gmail.com">migkat23@gmail.com</a><br>
+                    <a href="tel:+13059922177">+1 (305) 992-2177</a> (Katherine) <br><a href="tel:++34626494211">+34 626 494 211</a> (Miguel)
                 </p>
             </section>
             <!-- <p>&copy; 2023 Our Wedding</p> -->
@@ -50,7 +51,7 @@
         </div>
         <blockquote style="text-align: center;">
             "Love is patient, love is kind... It always protects, always trusts, always hopes, always
-            perseveres." <br> <i>1 Corinthians 13:4-7</i>
+            perseveres."<br><i>1 Corinthians 13:4-7</i>
         </blockquote>
         {% block last_updated %} {% endblock %}
     </footer>
