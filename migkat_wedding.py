@@ -56,7 +56,7 @@ def register():
             users = json.load(file)
 
         # Store the user in the JSON file
-        users.append({'id': users[-1]['id']+1, 'username': username, 'password': hashed_password})
+        users.append({'num': users[-1]['num']+1, 'username': username, 'password': hashed_password})
         with open(path_users, 'w') as file:
             json.dump(users, file, indent=2)
         return jsonify({'message': 'User registered successfully'})
@@ -141,8 +141,7 @@ def set_language():
     lang = request.cookies.get('lang') or DEFAULT_LANGUAGE
     g.lang = lang
     g.path = '' if g.lang == 'en' else 'es'
-    print('settin language!!!', lang, 'PATH', request.path,
-          'ENDPOINT', request.endpoint, 'URL', request.script_root)
+    # print('settin language!!!', lang, 'PATH', request.path, 'ENDPOINT', request.endpoint, 'URL', request.script_root)
     if request.path.startswith('/es'):
         g.lang = 'es'
     else:
@@ -152,7 +151,7 @@ def set_language():
 @app.route('/es')
 @app.route('/')
 def main():
-    print("##############", g.lang, request.cookies.get('lang'))
+    # print("##############", g.lang, request.cookies.get('lang'))
     if g.lang == 'en':
         return render_template('main.html', last_updated=last_updated, lang=g.lang)
     elif g.lang == 'es':
@@ -237,6 +236,6 @@ def test():
 
 
 if __name__ == '__main__':
-    # app.run(debug=True) # online
+    app.run(debug=False) # online
     # app.run(host='192.168.1.60',  debug=True) # Binghamton
-    app.run(host='192.168.0.7',  debug=True)  # Providence
+    # app.run(host='192.168.0.7',  debug=True)  # Providence
