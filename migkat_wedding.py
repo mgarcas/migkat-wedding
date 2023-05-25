@@ -216,7 +216,8 @@ def rsvp():
             else:
                 return redirect('/under_construction')
         else:
-            return render_template('rsvp.html', lang=g.lang)
+            # return render_template('rsvp.html', lang=g.lang)
+            return redirect('/under_construction')
     elif g.lang == 'es':
         return redirect('/es/under_construction')
 

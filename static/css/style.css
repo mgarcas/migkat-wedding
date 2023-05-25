@@ -461,7 +461,7 @@ body::-webkit-scrollbar-track {
 }
 
 .panel.active .panel-content {
-    max-height: 500px;
+    max-height: 1000px;
     transition: max-height 0.5s ease;
 }
 
