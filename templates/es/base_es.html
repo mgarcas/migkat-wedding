@@ -15,17 +15,18 @@
                         onclick="document.cookie='lang=en';location.reload()">EN | <u>ES</u></a></nav>
             </div>
             <div class="one-third column upper-header">
-                <div class="logo">
+                <!-- <div class="logo">
                     <a href="/es">
                         <img src="{{ url_for('static', filename='images/logoKM.png') }}" alt="Logo">
                     </a>
-                </div>
+                </div> -->
             </div>
             <div class="one-third column">
                 <nav><a class="mano modal-btn u-pull-right">Contacto</a></nav>
             </div>
         </div>
-        <!-- <h1 class="title">Nuestra Boda</h1> -->
+        <h1 class="title" style="font-size: 43px;">Katherine & Miguel</h1>
+        <h1 class="title" style="font-size: 30px;">12·08·2023</h1>
         {% with lang=lang %}
             {% include 'elements/wrap.html'%}
         {% endwith %}

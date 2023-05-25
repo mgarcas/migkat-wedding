@@ -47,7 +47,8 @@ header {
 .title {
     margin: 0;
     font-size: 36px;
-    color: #7F7382;
+    /* color: #7F7382; */
+    color: #773F87;
     /* color: #fff; */
     /* font-family: 'Lobster Two', cursive; */
     /* font-family: 'Pacifico', cursive; */
