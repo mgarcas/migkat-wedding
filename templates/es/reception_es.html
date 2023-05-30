@@ -1,0 +1,60 @@
+{% extends 'es/base_es.html' %}
+
+{% block title %}Boda K&M - Recepción{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <div class="row">
+        <div class="twelve columns">
+            <h2>Recepción</h2>
+        </div>
+    </div>
+
+
+    <div class="row c-left">
+        <div class="six columns">
+            <h4>Fecha y hora</h4>
+            <p>Sábado, 12 de agosto de 2023<br>
+                17:00</p>
+
+            <h4>Lugar</h4>
+            El Casino del Parque Roger Williams<br>
+            Providence, RI<br>
+            <box-icon name='map' class="icon"></box-icon> Entrada al parque por Elmwood Street<br>
+            <a href="#map">Ver en el mapa</a><br></p>
+
+            <h4>Aparcamiento</h4>
+            <p>Espacio de aparcamiento gratuito disponible al lado del Casino.</p>
+            
+            <h4>Accesibilidad</h4>
+            <p>Acesible a personas con mobilidad reducida. Ascensor en el interior del edificio.</p>
+
+        </div>
+        <div class="six columns">
+            <img src="{{ url_for('static', filename='images/IMG_5908_rwpc.jpg') }}" alt="Roger-Williams-Park-Casino"
+                class="u-max-full-width" style="padding: 10px;">
+        </div>
+    </div>
+    <div class="row">
+        <div class="twelve columns">
+            <h4>Menu</h4>
+            <p>Más información próximamente.</p>
+        </div>
+    </div>
+    <div style="width: 100%; height: 400px" id="map">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1487.5237473618133!2d-71.41853315137215!3d41.78419006501631!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e44f979a12314d%3A0x655fa32ff485643d!2sRoger%20Williams%20Park%20Casino!5e0!3m2!1ses!2sus!4v1684092968589!5m2!1ses!2sus"
+            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+
+    <div class="row">
+        <div class="twelve columns">
+            <img src="{{ url_for('static', filename='images/IMG_5908_rwpc_us.jpg') }}" alt="Roger-Williams-Park-Casino-Us"
+                class="u-max-full-width" style="padding: 10px;">
+        </div>
+    </div>
+</div>
+
+{% endblock %}

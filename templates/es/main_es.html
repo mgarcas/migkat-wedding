@@ -4,18 +4,19 @@
 
 {% block main %}
 <div class="container">
-    <h2>Bienvenido to Our Wedding Site</h2>
+    <h2>Bienvenido a la web de nuestra boda</h2>
 
     <h4>Katherine & Miguel</h4>
     <h5>12 de Agosto de 2023</h5>
 
-    <p>We are excited to share our special day with you. Please use the navigation links above to learn more about us, RSVP, view our photo gallery, and contact us with any questions you may have. We look forward to celebrating with you!
-    </p>
+    <p>Estamos muy contentos de poder compartir este fin de semana tan especial con vosotros. Sabemos que la gente viene desde lejos, así que hemos reunido algo de información para ayudaros a planear el viaje. Iremos actualizando esta web periódicamente antes del gran día, aseguraos de echar un ojo de vez en cuando.</p>
+    <p>Por favor, usad los enlaces de navegación para obtener más información y poneros en contacto con nosotros con cualquier pregunta que podáis tener</p>
+    <p>Os esperamos en el Ocean State, como es conocido el estado de Rhode Island. ¡Estamos deseando celebrar con todos vosotros!</p>
 
     {% with lang=lang%}
         {% include 'elements/accordion.html' %}
     {% endwith %}
-    <img id="KM_lb" src="{{ url_for('static', filename='images/IMG-1835.jpg') }}" alt="Katherine & Miguel">
+    <img id="KM_lb" src="{{ url_for('static', filename='images/IMG_1659_NER_mk.jpg') }}" alt="Katherine & Miguel">
 </div>
 {% endblock %}
 

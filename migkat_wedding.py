@@ -164,7 +164,7 @@ def about():
     if g.lang == 'en':
         return render_template('about.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/work_in_progress_es.html', lang=g.lang)
+        return render_template('es/about_es.html', lang=g.lang)
 
 
 @app.route('/es/rehearsal')
@@ -173,7 +173,7 @@ def rehearsal():
     if g.lang == 'en':
         return render_template('rehearsal.html', lang=g.lang)
     elif g.lang == 'es':
-        return redirect('/es/under_construction')
+        return render_template('es/rehearsal_es.html', lang=g.lang)
 
 
 @app.route('/es/ceremony')
@@ -182,7 +182,7 @@ def ceremony():
     if g.lang == 'en':
         return render_template('ceremony.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/work_in_progress_es.html', lang=g.lang)
+        return render_template('es/ceremony_es.html', lang=g.lang)
 
 
 @app.route('/es/reception')
@@ -191,7 +191,7 @@ def reception():
     if g.lang == 'en':
         return render_template('reception.html', lang=g.lang)
     elif g.lang == 'es':
-        return redirect('/es/under_construction')
+        return render_template('es/reception_es.html', lang=g.lang)
 
 
 @app.route('/es/accomodation')
@@ -200,7 +200,7 @@ def accomodation():
     if g.lang == 'en':
         return render_template('accomodation.html', lang=g.lang)
     elif g.lang == 'es':
-        return render_template('es/work_in_progress_es.html', lang=g.lang)
+        return render_template('es/accomodation_es.html', lang=g.lang)
 
 
 @app.route('/es/rsvp', methods=['GET', 'POST'])
@@ -237,6 +237,8 @@ def test():
 
 
 if __name__ == '__main__':
-    app.run(debug=False) # online
+    # app.run(debug=False) # online
+    # app.run(debug=True) # online
+    app.run(host='192.168.1.201',  debug=True) # Madrid
     # app.run(host='192.168.1.60',  debug=True) # Binghamton
     # app.run(host='192.168.0.7',  debug=True)  # Providence
