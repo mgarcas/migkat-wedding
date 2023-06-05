@@ -15,9 +15,10 @@ window.addEventListener("load", function () {
 
 document.addEventListener("DOMContentLoaded", function () {
     const panels = document.querySelectorAll(".panel");
+    const panelsHeader = document.querySelectorAll(".panel-header");
 
-    panels.forEach((panel) => {
-        panel.addEventListener("click", () => {
+    panels.forEach((panel, index) => {
+        panelsHeader[index].addEventListener("click", () => {
             if (panel.classList.contains("active")) {
                 panel.classList.remove("active");
             } else {

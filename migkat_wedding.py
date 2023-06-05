@@ -2,7 +2,7 @@ from models.user import User
 import datetime
 import json
 import os
-from flask import Flask, g, jsonify, redirect, render_template, request, session
+from flask import Flask, g, jsonify, redirect, render_template, request
 from flask_login import LoginManager, current_user, login_required, login_user, logout_user
 import pandas as pd
 import get_data_guests
