@@ -160,6 +160,23 @@ nav a:hover .icon-home {
     height: 150px;
 }
 
+.hrRow {
+    display: flex;
+    align-items: center;
+}
+
+.hr-line {
+    flex: 1;
+    border: none;
+    border-top: 2px solid #2c3e50;
+}
+
+.anchor-icon {
+    margin: 0 10px;
+}
+
+
+
 /* Footer */
 
 footer {
@@ -341,6 +358,14 @@ img#KM_lb,
 }
 
 @media screen and (max-width: 480px) {
+
+    .labelCheckbox {
+        padding-top: 15px;
+    }
+
+    #checkbox-placeholder {
+        display: none;
+    }
 
     #exampleMessage {
         height: 220px;

@@ -216,10 +216,11 @@ def rsvp():
             else:
                 return redirect('/under_construction')
         else:
-            # return render_template('rsvp.html', lang=g.lang)
-            return redirect('/under_construction')
+            return render_template('rsvp.html', lang=g.lang)
+            # return redirect('/under_construction')
     elif g.lang == 'es':
-        return redirect('/es/under_construction')
+        return render_template('rsvp.html', lang=g.lang)
+        # return redirect('/es/under_construction')
 
 
 @app.route('/es/under_construction')
@@ -237,8 +238,8 @@ def test():
 
 
 if __name__ == '__main__':
-    app.run(debug=False) # online
+    # app.run(debug=False)  # online
     # app.run(debug=True) # online
     # app.run(host='192.168.1.201',  debug=True) # Madrid
     # app.run(host='192.168.1.60',  debug=True) # Binghamton
-    # app.run(host='192.168.0.7',  debug=True)  # Providence
+    app.run(host='192.168.0.7',  debug=True)  # Providence

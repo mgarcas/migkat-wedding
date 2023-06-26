@@ -4,23 +4,97 @@ meals = [
     { value: "vegan", text: "Vegan Option" },
     { value: "children", text: "Child Menu" }]
 
+hotels = [
+    { value: "omni", text: "Omni Downtown Providence" },
+    { value: "residence", text: "Residence Inn Providence Downtown" },
+    { value: "other", text: "Other" }]
+
 function addGuests() {
     // Get the parent element to add the row to
     const mealPreferences = document.getElementById("names-meals");
     mealPreferences.innerHTML = ""; // Clear any previous input fields
     mealPreferences.hidden = false;
 
-    const rowSubtitle = document.createElement("div");
-    const subtitle = document.createElement("h4");
-    subtitle.textContent = "Meal preferences";
-    rowSubtitle.appendChild(subtitle);
-    mealPreferences.appendChild(rowSubtitle);
+    // const rowSubtitle = document.createElement("div");
+    // const subtitle = document.createElement("h4");
+    // subtitle.textContent = "Guests information";
+    // rowSubtitle.appendChild(subtitle);
+    // mealPreferences.appendChild(document.createElement("hr"));
+    // mealPreferences.appendChild(rowSubtitle);
+
 
     var guestsSelect = document.getElementById("guests-select");
     var numGuests = guestsSelect.options[guestsSelect.selectedIndex].value;
 
     for (var i = 0; i < numGuests; i++) {
-        // Create a new row
+        //### Create a new row for title ###
+        const rowTitle = createRow();
+        const title = document.createElement("h3");
+        title.textContent = "Guest " + (i + 1);
+        title.style.fontVariant = "small-caps";
+        title.style.textAlign = "left";
+        rowTitle.appendChild(title);
+        //####################################################
+
+        //### Create a new row for Name and Age ###
+        const rowName = createRow();
+        const columnName = createColumn("eight");
+        generateGuest(columnName, i)
+        const columnAge = createColumn("four")
+        generateAge(columnAge, i)
+        rowName.appendChild(columnName);
+        rowName.appendChild(columnAge);
+        //####################################################
+
+        //### Create a new row for Entrée ###
+        const rowEntree = createRow();
+        const columnMeal = createColumn("six");
+        const columnAllergies = createColumn("six");
+
+        rowEntree.setAttribute('id', "row-allergies-" + i);
+
+        generateAllergies(columnAllergies, i);
+        generateMeal(columnMeal, i);
+        rowEntree.appendChild(columnMeal);
+        rowEntree.appendChild(columnAllergies);
+        //####################################################
+
+        //### Create a new row for Additional Information subtitle ###
+        const rowAdditionalInfo = createRow();
+        const subTitle = document.createElement("h4");
+        subTitle.textContent = "Additional Information:";
+        subTitle.style = "text-align: left; padding-top: 20px;"
+        rowAdditionalInfo.appendChild(subTitle);
+        //####################################################
+
+        //### Create a new row for welcome dinner radio buttons ###
+        const rowWelcome = createRow();
+        const colWelcome = createColumn("twelve");
+        const welcomeText = "Will you be able to join us for a welcome dinner on Friday?";
+        generateRadioButtons(colWelcome, "welcome", welcomeText, i);
+        rowWelcome.appendChild(colWelcome);
+        //####################################################
+
+        //### Create a new row for bus radio buttons ###
+        const rowBus = createRow();
+        const colBus = createColumn("twelve");
+        const busText = "Would you like to use the bus service from the Omni or Residence Inn hotels on the day of the wedding?";
+        generateRadioButtons(colBus, "bus", busText, i);
+        rowBus.appendChild(colBus);
+        //####################################################
+
+        //### Create a new row for hotel dropdown ###
+        const rowHotel = createRow();
+        rowHotel.id = "row-hotel-" + i;
+        const colHotel = createColumn("six");
+        const textHotel = "Which hotel will you be staying at?";
+        generateHotel(colHotel, textHotel, i);
+        rowHotel.appendChild(colHotel);
+        //####################################################
+
+
+
+
         const row = document.createElement("div");
         row.classList.add("row");
         const rowAllergies = document.createElement("div");
@@ -29,27 +103,54 @@ function addGuests() {
         // row.style = "display: flex; align-items: center;";
 
         // Create a new columns
-        const column_guest = document.createElement("div");
-        column_guest.classList.add("four", "columns", "c-left");
-        const column_meal = document.createElement("div");
-        column_meal.classList.add("four", "columns", "c-left");
-        const column_age = document.createElement("div");
-        column_age.classList.add("two", "columns", "c-left");
-        const column_allergies = document.createElement("div");
-        column_allergies.classList.add("four", "columns", "c-left");
+        // const column_guest = document.createElement("div");
+        // column_guest.classList.add("four", "columns", "c-left");
+        // const column_meal = document.createElement("div");
+        // column_meal.classList.add("four", "columns", "c-left");
+        // const column_age = document.createElement("div");
+        // column_age.classList.add("two", "columns", "c-left");
+        // const column_allergies = document.createElement("div");
+        // column_allergies.classList.add("four", "columns", "c-left");
 
-        row.appendChild(column_guest);
-        row.appendChild(column_meal);
-        row.appendChild(column_age);
-        rowAllergies.appendChild(column_allergies);
-        mealPreferences.appendChild(row);
-        mealPreferences.appendChild(rowAllergies);
-        mealPreferences.appendChild(document.createElement("hr"));
+        // row.appendChild(column_guest);
+        // row.appendChild(column_meal);
+        // row.appendChild(column_age);
+        // rowAllergies.appendChild(column_allergies);
 
-        generateGuest(column_guest, i);
-        generateMeal(column_meal, i);
-        generateAge(column_age, i);
-        generateAllergies(column_allergies, i)
+        mealPreferences.appendChild(rowTitle);
+        mealPreferences.appendChild(rowName);
+        mealPreferences.appendChild(rowName);
+        mealPreferences.appendChild(rowEntree);
+        mealPreferences.appendChild(rowAdditionalInfo);
+        mealPreferences.appendChild(rowWelcome);
+        mealPreferences.appendChild(rowBus);
+        mealPreferences.appendChild(rowHotel);
+
+        // mealPreferences.appendChild(row);
+        // mealPreferences.appendChild(rowAllergies);
+
+        const hrRow = document.createElement('row');
+        const firstHr = document.createElement("hr");
+        const secondHr = document.createElement("hr");
+        const anchor = document.createElement("box-icon");
+        anchor.setAttribute('name', 'anchor');
+        anchor.setAttribute('color', '#2c3e50');
+        // <box-icon name='anchor' color='#c6c6c6'></box-icon>
+
+        hrRow.classList.add("hrRow");
+        firstHr.classList.add("hr-line");
+        secondHr.classList.add("hr-line");
+        anchor.classList.add("anchor-icon");
+
+        hrRow.appendChild(firstHr);
+        hrRow.appendChild(anchor);
+        hrRow.appendChild(secondHr);
+        mealPreferences.appendChild(hrRow);
+
+        // generateGuest(column_guest, i);
+        // generateMeal(column_meal, i);
+        // generateAge(column_age, i);
+        // generateAllergies(column_allergies, i)
     }
 }
 
@@ -68,13 +169,13 @@ function generateGuest(column, i) {
     input.name = "guest-name-" + i;
     input.className = "u-full-width rsvp";
     input.id = "guest-name-" + i;
+    input.required = true;
 
 
     if (i == 0) {
         var nameFirstGuest = document.getElementById("name");
         var surnameFirstGuest = document.getElementById("surname");
         input.value = nameFirstGuest.value + " " + surnameFirstGuest.value;
-        // input.disabled = true;
         input.readOnly = true;
         input.classList.remove("rsvp");
     } else {
@@ -91,8 +192,10 @@ function generateMeal(column, i) {
 
     label.htmlFor = "guest-meal-" + i;
     label.style.textAlign = "left"
-    label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
+    // label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
+    label.innerHTML = "Please, choose an entrée for the wedding reception:";
 
+    select.required = true;
     select.className = "u-full-width";
     select.name = "guest-meal-" + i;
 
@@ -125,6 +228,82 @@ function addOptionsMeal(select) {
     });
 }
 
+function generateHotel(column, labelHotel, i) {
+    var label = document.createElement("label");
+    var select = document.createElement("select");
+
+    label.htmlFor = "hotel-" + i;
+    label.style.textAlign = "left"
+    label.innerHTML = labelHotel;
+
+    select.required = true;
+    select.className = "u-full-width";
+    select.name = "hotel-" + i;
+
+    select.placeholder = "Guest #" + (i + 1) + " Hotel";
+
+    addOptionsHotel(select);
+
+    column.appendChild(label);
+    column.appendChild(select);
+
+    select.onchange = function () {
+        if (select.value === 'other') {
+            console.log("yes, it's other");
+            // alert('Please select an option');
+            const otherHotel = document.createElement("div");
+            const labelOtherHotel = document.createElement("label");
+            const inputOtherHotel = document.createElement("input");
+            const row = document.getElementById("row-hotel-" + i);
+            const columnOtherHotel = createColumn("six");
+            columnOtherHotel.id = "column-other-hotel" + i;
+
+
+            labelOtherHotel.htmlFor = "other-hotel-" + i;
+            labelOtherHotel.style.textAlign = "left"
+            labelOtherHotel.innerHTML = "If possible, please, fill the information";
+
+            inputOtherHotel.type = "text";
+            inputOtherHotel.name = "other-hotel-" + i;
+            inputOtherHotel.className = "u-full-width rsvp";
+            inputOtherHotel.id = "other-hotel-" + i;
+            inputOtherHotel.placeholder = "Please, specify the hotel you will be staying";
+
+            otherHotel.appendChild(labelOtherHotel);
+            otherHotel.appendChild(inputOtherHotel);
+
+            columnOtherHotel.appendChild(otherHotel);
+
+            row.appendChild(columnOtherHotel);
+
+        } else {
+            const columnOtherHotel = document.getElementById("column-other-hotel" + i);
+            columnOtherHotel.remove();
+
+        }
+
+    }
+}
+
+function addOptionsHotel(select) {
+    // Create a new option element with the placeholder text
+    const placeholderOption = document.createElement("option");
+    placeholderOption.value = "";
+    placeholderOption.text = "Select an option";
+    placeholderOption.disabled = true;
+    placeholderOption.selected = true;
+
+    // Add the option element to the beginning of the select element
+    select.insertBefore(placeholderOption, select.firstChild);
+
+    this.hotels.forEach(element => {
+        var hotelOption = document.createElement("option");
+        hotelOption.value = element.value;
+        hotelOption.text = element.text;
+        select.appendChild(hotelOption);
+    });
+}
+
 function generateAge(column, i) {
     var label = document.createElement("label");
     var ageCheckbox = document.createElement("input");
@@ -139,7 +318,7 @@ function generateAge(column, i) {
     placeHolder.innerHTML = "&nbsp;"
     // placeHolder.style = "height: 20px; position: relative; top: -10px; margin-bottom: 15px";
 
-    label.classList.add = "c-left";
+    label.classList.add("labelCheckbox");
 
     label.appendChild(ageCheckbox);
     label.appendChild(span);
@@ -152,7 +331,7 @@ function generateAllergies(column, i) {
     var label = document.createElement("label");
     var allergiesCheckbox = document.createElement("input");
     var span = document.createElement("span");
-    var placeHolder = document.createElement("label")
+    // var placeHolder = document.createElement("label")
 
     allergiesCheckbox.type = "checkbox";
     allergiesCheckbox.name = "guest-allergies-" + i;
@@ -160,16 +339,16 @@ function generateAllergies(column, i) {
 
     span.classList.add("label-body");
     span.innerHTML = "Food allergies?";
-    placeHolder.id = "checkbox-placeholder";
-    placeHolder.innerHTML = "&nbsp;"
+    // placeHolder.id = "checkbox-placeholder";
+    // placeHolder.innerHTML = "&nbsp;"
     // placeHolder.style = "height: 20px; position: relative; top: -10px; margin-bottom: 15px";
 
-    label.classList.add = "c-left";
+    label.classList.add("labelCheckbox");
 
     label.appendChild(allergiesCheckbox);
     label.appendChild(span);
 
-    column.appendChild(placeHolder);
+    // column.appendChild(placeHolder);
     column.appendChild(label);
 
     allergiesCheckbox.onchange = function () {
@@ -177,17 +356,17 @@ function generateAllergies(column, i) {
         if (allergiesCheckbox.checked) {
 
             console.log("clicked! number " + i)
-            const row = document.getElementById("row-allergies-" + i);
-            const column = document.createElement("div");
-            column.setAttribute("id","col-" + i)
-            column.classList.add("six", "columns", "c-left");
+            // const row = document.getElementById("row-allergies-" + i);
+            // const column = document.createElement("div");
+            // column.setAttribute("id","col-" + i)
+            // column.classList.add("four", "columns", "c-left");
 
-            var label = document.createElement("label");
+            // var label = document.createElement("label");
             var input = document.createElement("input");
 
-            label.htmlFor = "guest-comment-" + i;
-            label.style.textAlign = "left"
-            label.innerHTML = "Guest #" + (i + 1) + " comment";
+            // label.htmlFor = "guest-comment-" + i;
+            // label.style.textAlign = "left"
+            // label.innerHTML = "Guest #" + (i + 1) + " comment";
 
             input.type = "text";
             input.name = "guest-comment-" + i;
@@ -195,17 +374,58 @@ function generateAllergies(column, i) {
             input.id = "guest-comment-" + i;
             input.placeholder = "Please specify food allergies, intolerances, etc."
 
-            column.appendChild(label)
+            // column.appendChild(label)
             column.appendChild(input)
-            row.appendChild(column)
+            // row.appendChild(column)
         } else {
-            const col = document.getElementById("col-" + i);
-            col.remove();
+            // const col = document.getElementById("col-" + i);
+            // col.remove();
+            const input = document.getElementById("guest-comment-" + i);
+            input.remove();
         }
     }
 }
 
+function generateRadioButtons(column, name, textLabel, i) {
+    var label = document.createElement("label");
+    label.htmlFor = name;
+    label.innerHTML = textLabel;
+    var radiobuttons = document.createElement("div");
+    radiobuttons.classList.add("radio-buttons");
 
+    const labelYes = document.createElement("label");
+    labelYes.style.padding = "10px";
+    const labelNo = document.createElement("label");
+    labelNo.classList.add("inline");
+
+    const spanYes = document.createElement("span");
+    const spanNo = document.createElement("span");
+    const inputYes = document.createElement("input");
+    const inputNo = document.createElement("input");
+    inputYes.type = "radio";
+    inputYes.name = name + "-" + i;
+    inputYes.value = "yes";
+    inputYes.checked = true;
+    inputNo.type = "radio";
+    inputNo.name = name + "-" + i;
+    inputNo.value = "no";
+    inputNo.checked = false;
+    spanYes.classList.add("label-body");
+    spanYes.innerHTML = "Yes";
+    spanNo.classList.add("label-body");
+    spanNo.innerHTML = "No";
+
+    labelYes.appendChild(inputYes);
+    labelYes.appendChild(spanYes);
+    labelNo.appendChild(inputNo);
+    labelNo.appendChild(spanNo);
+
+    radiobuttons.appendChild(labelYes);
+    radiobuttons.appendChild(labelNo);
+
+    column.appendChild(label);
+    column.appendChild(radiobuttons);
+}
 
 function toggleSelectGuests() {
     var radioNo = document.querySelector('input[name="attending"][value="no"]');
@@ -258,6 +478,30 @@ window.addEventListener('load', function () {
 });
 
 
+function createRow() {
+    const row = document.createElement('div');
+    row.classList.add("row");
+    return row;
+}
+
+
+function createColumn(n) {
+    const column = document.createElement("div");
+    column.classList.add(n, "columns", "c-left");
+    return column
+}
+
+/* Handle errors or missing fields*/
+
+// var guestsSelect = document.getElementById("guests-select")
+// var nGuests = guestsSelect.options[guestsSelect.selectedIndex].value;
+
+// guestsSelect.addEventListener('submit', function (event) {
+//     if (nGuests.value === '') {
+//         event.preventDefault();
+//         alert('Please indicate number of guests');
+//     }
+// });
 
 // var checkbox = document.getElementById('guest-allergies-0');
 // checkbox.onchange = function() {
