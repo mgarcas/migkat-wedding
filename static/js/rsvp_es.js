@@ -150,7 +150,7 @@ function generateMeal(column, i) {
 
     label.htmlFor = "guest-meal-" + i;
     label.style.textAlign = "left"
-    label.innerHTML = "Por favor, elige un plato principal:";
+    label.innerHTML = "Elige un plato principal:";
 
     select.required = true;
     select.className = "u-full-width";
@@ -216,7 +216,7 @@ function generateHotel(column, labelHotel, i) {
 
             labelOtherHotel.htmlFor = "other-hotel-" + i;
             labelOtherHotel.style.textAlign = "left"
-            labelOtherHotel.innerHTML = "Si es posible, por favor haznos saber";
+            labelOtherHotel.innerHTML = "Si es posible, haznos saber";
 
             inputOtherHotel.type = "text";
             inputOtherHotel.name = "other-hotel-" + i;
