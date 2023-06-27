@@ -121,13 +121,14 @@ last_updated = datetime.datetime.utcnow()
 def getForm():
     if request.method == 'POST':
 
+        path_json = os.path.join(app.root_path, 'data', 'guests.json')
         name = request.form['name']
 
         if request.form['attending'] == 'no':
+            get_data_guests.dumpToJson(request.form, path_json, False)
             return False, name
 
-        path_json = os.path.join(app.root_path, 'data', 'guests.json')
-        get_data_guests.dumpToJson(request.form, path_json)
+        get_data_guests.dumpToJson(request.form, path_json, True)
 
         return True, name
     else:
@@ -203,7 +204,6 @@ def accomodation():
         return render_template('es/accomodation_es.html', lang=g.lang)
 
 
-@app.route('/es/rsvp', methods=['GET', 'POST'])
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
     if g.lang == 'en':
@@ -212,15 +212,28 @@ def rsvp():
             attending, name = getForm()
 
             if attending:
-                return render_template('confirmation.html', name=name, lang=g.lang)
+                return render_template('confirmation.html', name=name, lang=g.lang, attending="yes")
             else:
-                return redirect('/under_construction')
+                return render_template('confirmation.html', name=name, lang=g.lang, attending="no")
         else:
             return render_template('rsvp.html', lang=g.lang)
             # return redirect('/under_construction')
-    elif g.lang == 'es':
-        return render_template('rsvp.html', lang=g.lang)
-        # return redirect('/es/under_construction')
+
+
+@app.route('/es/rsvp', methods=['GET', 'POST'])
+def rsvp_es():
+    if g.lang == 'es':
+        if request.method == 'POST':
+
+            attending, name = getForm()
+
+            if attending:
+                return render_template('es/confirmation_es.html', name=name, lang=g.lang, attending="yes")
+            else:
+                return render_template('es/confirmation_es.html', name=name, lang=g.lang, attending="no")
+        else:
+            return render_template('es/rsvp_es.html', lang=g.lang)
+            # return redirect('/es/under_construction')
 
 
 @app.route('/es/under_construction')
@@ -238,8 +251,8 @@ def test():
 
 
 if __name__ == '__main__':
-    # app.run(debug=False)  # online
+    app.run(debug=False)  # online
     # app.run(debug=True) # online
     # app.run(host='192.168.1.201',  debug=True) # Madrid
     # app.run(host='192.168.1.60',  debug=True) # Binghamton
-    app.run(host='192.168.0.7',  debug=True)  # Providence
+    # app.run(host='192.168.0.6',  debug=True)  # Providence

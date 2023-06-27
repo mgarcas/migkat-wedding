@@ -1,11 +1,10 @@
-import os
 import datetime
 import json
 
 
 
 # columns = ['Name', 'Email','Family/Group','Attending','Meal','U21','Allergies','Allergies Comment','Message','Timestamp']
-columns = ['Name','Family/Group','Attending','U21','Entrée','Allergies','Allergies Comment','Welcome dinner','Bus','Hotel','Other hotel','Message','Timestamp']
+columns = ['Name','Family/Group','Attending','Entrée','U21','Allergies','Allergies Comment','Welcome dinner','Bus','Hotel','Other hotel','Message','Timestamp']
 
 def getData(rsvp):
 
@@ -36,8 +35,39 @@ def getData(rsvp):
     return data_json
 
 
-def dumpToJson(data, path):
-    new_data_json = getData(data)
+def getDataNotAttending(rsvp):
+
+    data_json=[]
+    guests = 1
+    timestamp = datetime.datetime.utcnow().strftime('%Y-%m-%d %H:%M:%S UTC')
+
+    for i in range(guests):
+        row=[]
+        row.append(rsvp['name'])
+        row.append(rsvp['surname'])
+        row.append(rsvp['attending'])
+        row.append('')
+        row.append('')
+        row.append('')
+        row.append('')
+        row.append('')
+        row.append('')
+        row.append('')
+        row.append('')
+        row.append(rsvp['message'])
+        row.append(timestamp)
+
+        data_json.append(dict(zip(columns, row)))
+    
+    return data_json
+
+
+def dumpToJson(data, path, attending):
+    
+    if attending:
+        new_data_json = getData(data)
+    else:
+        new_data_json = getDataNotAttending(data)
     
     try:
         with open(path, 'r') as file:

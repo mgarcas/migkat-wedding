@@ -1,0 +1,27 @@
+{% extends 'es/base_es.html' %}
+
+{% block title %}Boda K&M - RSVP Confirmación{% endblock %}
+
+{% block main %}
+
+{% if attending == 'yes' %}
+
+<div class="container">
+    <h2>Confirmado</h2>
+    <h4>¡Gracias por confirmar tu asistencia, {{ name }}!</h4>
+    <p>Estamos deseando celebrar nuestra boda contigo.</p>
+    <button onclick="window.location.href = '/es'">Inicio</button>
+</div>
+
+{% else %}
+
+<div class="container">
+    <h2>Confirmado</h2>
+    <h4>Gracias por tu repuesta, {{ name }}.</h4>
+    <p>Te echaremos de menos.</p>
+    <button onclick="window.location.href = '/es'">Inicio</button>
+</div>
+
+{% endif %}
+
+{% endblock %}

@@ -4,20 +4,21 @@
 
 {% block main %}
 
-{% if lang == 'en' %}
+{% if attending == 'yes' %}
 <div class="container">
     <h2>RSVP Confirmation</h2>
     <h4>Thank you for your RSVP, {{ name }}!</h4>
-    <p>We look forward to seeing you at the event.</p>
+    <p>We look forward to celebrating our wedding with you!</p>
     <button onclick="window.location.href = '/'">Home</button>
 </div>
 
 {% else %}
+
 <div class="container">
-    <h2>Confirmado</h2>
-    <h4>Thank you for your RSVP, {{ name }}!</h4>
-    <p>We look forward to seeing you at the event.</p>
-    <button onclick="window.location.href = '/es'">Inicio</button>
+    <h2>RSVP Confirmation</h2>
+    <h4>Thank you for your RSVP, {{ name }}.</h4>
+    <p>We will miss you.</p>
+    <button onclick="window.location.href = '/'">Home</button>
 </div>
 
 {% endif %}

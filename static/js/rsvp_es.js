@@ -1,27 +1,19 @@
 meals = [
-    { value: "meat", text: "Braised Short Ribs" },
-    { value: "fish", text: "Grilled Swordfish" },
-    { value: "vegan", text: "Wild Mushroom Ravioli" },
-    { value: "children", text: "Children's Meal" }]
+    { value: "meat", text: "Tira de asado de ternera" },
+    { value: "fish", text: "Emperador a la parrilla" },
+    { value: "vegan", text: "Ravioli de champiñones silvestres" },
+    { value: "children", text: "Menú infantil" }]
 
 hotels = [
     { value: "omni", text: "Omni Downtown Providence" },
     { value: "residence", text: "Residence Inn Providence Downtown" },
-    { value: "other", text: "Other" }]
+    { value: "other", text: "Otro" }]
 
 function addGuests() {
     // Get the parent element to add the row to
     const mealPreferences = document.getElementById("names-meals");
     mealPreferences.innerHTML = ""; // Clear any previous input fields
     mealPreferences.hidden = false;
-
-    // const rowSubtitle = document.createElement("div");
-    // const subtitle = document.createElement("h4");
-    // subtitle.textContent = "Guests information";
-    // rowSubtitle.appendChild(subtitle);
-    // mealPreferences.appendChild(document.createElement("hr"));
-    // mealPreferences.appendChild(rowSubtitle);
-
 
     var guestsSelect = document.getElementById("guests-select");
     var numGuests = guestsSelect.options[guestsSelect.selectedIndex].value;
@@ -30,7 +22,7 @@ function addGuests() {
         //### Create a new row for title ###
         const rowTitle = createRow();
         const title = document.createElement("h3");
-        title.textContent = "Guest " + (i + 1);
+        title.textContent = "Invitado " + (i + 1);
         title.style.fontVariant = "small-caps";
         title.style.textAlign = "left";
         rowTitle.appendChild(title);
@@ -62,7 +54,7 @@ function addGuests() {
         //### Create a new row for Additional Information subtitle ###
         const rowAdditionalInfo = createRow();
         const subTitle = document.createElement("h4");
-        subTitle.textContent = "Additional Information:";
+        subTitle.textContent = "Información adicional:";
         subTitle.style = "text-align: left; padding-top: 20px;"
         rowAdditionalInfo.appendChild(subTitle);
         //####################################################
@@ -70,7 +62,7 @@ function addGuests() {
         //### Create a new row for welcome dinner radio buttons ###
         const rowWelcome = createRow();
         const colWelcome = createColumn("twelve");
-        const welcomeText = "Will you be able to join us for a welcome dinner on Friday?";
+        const welcomeText = "¿Contaremos contigo para la cena de bienvenida el viernes?";
         generateRadioButtons(colWelcome, "welcome", welcomeText, i);
         rowWelcome.appendChild(colWelcome);
         //####################################################
@@ -78,7 +70,7 @@ function addGuests() {
         //### Create a new row for bus radio buttons ###
         const rowBus = createRow();
         const colBus = createColumn("twelve");
-        const busText = "Would you like to use the bus service from the Omni or Residence Inn hotels on the day of the wedding?";
+        const busText = "¿Te gustaría usar el serivicio de autobús desde los hoteles Omni or Residence Inn el día de la boda?";
         generateRadioButtons(colBus, "bus", busText, i);
         rowBus.appendChild(colBus);
         //####################################################
@@ -87,35 +79,10 @@ function addGuests() {
         const rowHotel = createRow();
         rowHotel.id = "row-hotel-" + i;
         const colHotel = createColumn("six");
-        const textHotel = "Where are you staying?";
+        const textHotel = "¿Dónde te alojarás?";
         generateHotel(colHotel, textHotel, i);
         rowHotel.appendChild(colHotel);
         //####################################################
-
-
-
-
-        const row = document.createElement("div");
-        row.classList.add("row");
-        const rowAllergies = document.createElement("div");
-        rowAllergies.classList.add("row");
-        rowAllergies.setAttribute('id', "row-allergies-" + i);
-        // row.style = "display: flex; align-items: center;";
-
-        // Create a new columns
-        // const column_guest = document.createElement("div");
-        // column_guest.classList.add("four", "columns", "c-left");
-        // const column_meal = document.createElement("div");
-        // column_meal.classList.add("four", "columns", "c-left");
-        // const column_age = document.createElement("div");
-        // column_age.classList.add("two", "columns", "c-left");
-        // const column_allergies = document.createElement("div");
-        // column_allergies.classList.add("four", "columns", "c-left");
-
-        // row.appendChild(column_guest);
-        // row.appendChild(column_meal);
-        // row.appendChild(column_age);
-        // rowAllergies.appendChild(column_allergies);
 
         mealPreferences.appendChild(rowTitle);
         mealPreferences.appendChild(rowName);
@@ -125,9 +92,6 @@ function addGuests() {
         mealPreferences.appendChild(rowWelcome);
         mealPreferences.appendChild(rowBus);
         mealPreferences.appendChild(rowHotel);
-
-        // mealPreferences.appendChild(row);
-        // mealPreferences.appendChild(rowAllergies);
 
         const hrRow = document.createElement('row');
         const firstHr = document.createElement("hr");
@@ -145,11 +109,6 @@ function addGuests() {
         hrRow.appendChild(anchor);
         hrRow.appendChild(secondHr);
         mealPreferences.appendChild(hrRow);
-
-        // generateGuest(column_guest, i);
-        // generateMeal(column_meal, i);
-        // generateAge(column_age, i);
-        // generateAllergies(column_allergies, i)
     }
 }
 
@@ -162,7 +121,7 @@ function generateGuest(column, i) {
 
     label.htmlFor = "guest-name-" + i;
     label.style.textAlign = "left"
-    label.innerHTML = "Guest #" + (i + 1) + " Name";
+    label.innerHTML = "Invitado " + (i + 1) + " - Nombre";
 
     input.type = "text";
     input.name = "guest-name-" + i;
@@ -178,7 +137,7 @@ function generateGuest(column, i) {
         input.readOnly = true;
         input.classList.remove("rsvp");
     } else {
-        input.placeholder = "Guest #" + (i + 1) + " name";
+        input.placeholder = "Invitado " + (i + 1) + " - nombre";
     }
 
     column.appendChild(label);
@@ -191,14 +150,13 @@ function generateMeal(column, i) {
 
     label.htmlFor = "guest-meal-" + i;
     label.style.textAlign = "left"
-    // label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
-    label.innerHTML = "Please, choose an entrée for the wedding reception:";
+    label.innerHTML = "Por favor, elige un plato principal:";
 
     select.required = true;
     select.className = "u-full-width";
     select.name = "guest-meal-" + i;
 
-    select.placeholder = "Guest #" + (i + 1) + " Meal";
+    select.placeholder = "Invitado " + (i + 1) + " - plato principal";
 
     addOptionsMeal(select);
 
@@ -212,7 +170,7 @@ function addOptionsMeal(select) {
     // Create a new option element with the placeholder text
     const placeholderOption = document.createElement("option");
     placeholderOption.value = "";
-    placeholderOption.text = "Select an option";
+    placeholderOption.text = "Selecciona una opción";
     placeholderOption.disabled = true;
     placeholderOption.selected = true;
 
@@ -239,7 +197,7 @@ function generateHotel(column, labelHotel, i) {
     select.className = "u-full-width";
     select.name = "hotel-" + i;
 
-    select.placeholder = "Guest #" + (i + 1) + " Hotel";
+    select.placeholder = "Invitado " + (i + 1) + " - hotel";
 
     addOptionsHotel(select);
 
@@ -248,8 +206,6 @@ function generateHotel(column, labelHotel, i) {
 
     select.onchange = function () {
         if (select.value === 'other') {
-            // console.log("yes, it's other");
-            // alert('Please select an option');
             const otherHotel = document.createElement("div");
             const labelOtherHotel = document.createElement("label");
             const inputOtherHotel = document.createElement("input");
@@ -260,13 +216,13 @@ function generateHotel(column, labelHotel, i) {
 
             labelOtherHotel.htmlFor = "other-hotel-" + i;
             labelOtherHotel.style.textAlign = "left"
-            labelOtherHotel.innerHTML = "If possible, please let us know";
+            labelOtherHotel.innerHTML = "Si es posible, por favor haznos saber";
 
             inputOtherHotel.type = "text";
             inputOtherHotel.name = "other-hotel-" + i;
             inputOtherHotel.className = "u-full-width rsvp";
             inputOtherHotel.id = "other-hotel-" + i;
-            inputOtherHotel.placeholder = "Where are you staying?";
+            inputOtherHotel.placeholder = "¿Dónde te alojarás?";
 
             otherHotel.appendChild(labelOtherHotel);
             otherHotel.appendChild(inputOtherHotel);
@@ -288,7 +244,7 @@ function addOptionsHotel(select) {
     // Create a new option element with the placeholder text
     const placeholderOption = document.createElement("option");
     placeholderOption.value = "";
-    placeholderOption.text = "Select an option";
+    placeholderOption.text = "Selecciona una opción";
     placeholderOption.disabled = true;
     placeholderOption.selected = true;
 
@@ -312,10 +268,9 @@ function generateAge(column, i) {
     ageCheckbox.type = "checkbox";
     ageCheckbox.name = "guest-u21-" + i;
     span.classList.add("label-body");
-    span.innerHTML = "Under 21?";
+    span.innerHTML = "¿Menor de 21 años?";
     placeHolder.id = "checkbox-placeholder";
     placeHolder.innerHTML = "&nbsp;"
-    // placeHolder.style = "height: 20px; position: relative; top: -10px; margin-bottom: 15px";
 
     label.classList.add("labelCheckbox");
 
@@ -337,17 +292,13 @@ function generateAllergies(column, i) {
     allergiesCheckbox.id = "guest-allergies-" + i;
 
     span.classList.add("label-body");
-    span.innerHTML = "Food allergies?";
-    // placeHolder.id = "checkbox-placeholder";
-    // placeHolder.innerHTML = "&nbsp;"
-    // placeHolder.style = "height: 20px; position: relative; top: -10px; margin-bottom: 15px";
+    span.innerHTML = "¿Alguna alergia alimentaria?";
 
     label.classList.add("labelCheckbox");
 
     label.appendChild(allergiesCheckbox);
     label.appendChild(span);
 
-    // column.appendChild(placeHolder);
     column.appendChild(label);
 
     allergiesCheckbox.onchange = function () {
@@ -360,7 +311,7 @@ function generateAllergies(column, i) {
             input.name = "guest-comment-" + i;
             input.className = "u-full-width rsvp";
             input.id = "guest-comment-" + i;
-            input.placeholder = "Please specify food allergies, intolerances, etc."
+            input.placeholder = "Por favor, indica alergias, intolerancias, etc."
 
             column.appendChild(input)
         } else {
@@ -395,7 +346,7 @@ function generateRadioButtons(column, name, textLabel, i) {
     inputNo.value = "no";
     inputNo.checked = false;
     spanYes.classList.add("label-body");
-    spanYes.innerHTML = "Yes";
+    spanYes.innerHTML = "Sí";
     spanNo.classList.add("label-body");
     spanNo.innerHTML = "No";
 
@@ -474,42 +425,3 @@ function createColumn(n) {
     column.classList.add(n, "columns", "c-left");
     return column
 }
-
-/* Handle errors or missing fields*/
-
-// var guestsSelect = document.getElementById("guests-select")
-// var nGuests = guestsSelect.options[guestsSelect.selectedIndex].value;
-
-// guestsSelect.addEventListener('submit', function (event) {
-//     if (nGuests.value === '') {
-//         event.preventDefault();
-//         alert('Please indicate number of guests');
-//     }
-// });
-
-// var checkbox = document.getElementById('guest-allergies-0');
-// checkbox.onchange = function() {
-//   // code to be executed when the checkbox is checked or unchecked
-//   console.log("clicked!")
-// }
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     const form = document.querySelector('#formRSVP');
-//     form.addEventListener('submit', async (event) => {
-//         event.preventDefault(); // Prevent default form submission behavior
-
-//         const formData = new FormData(form); // Get form data
-//         const json = JSON.stringify(Object.fromEntries(formData)); // Convert form data to JSON
-
-//         const response = await fetch(form.action, { // Send POST request
-//             method: form.method,
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             },
-//             body: json
-//         });
-
-//         const data = await response.json(); // Parse response JSON
-//         console.log(data); // Log response data to console
-//     });
-// });

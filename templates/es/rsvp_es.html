@@ -1,0 +1,94 @@
+{% extends 'es/base_es.html' %}
+
+{% block head %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/rsvp_es.js') }}"></script>
+<script type="text/javascript" src="{{ url_for('static', filename='js/menu.js') }}"></script>
+{% endblock %}
+
+{% block title %}Boda K&M - RSVP{% endblock %}
+
+{% block main %}
+
+<div class="container">
+    <h2>RSVP</h2>
+    <p>Por favor, rellena el siguiente formulario para confirmar tu asistencia. Asegúrate de echar un ojo antes a las opciones de plato principal para la cena <a class="mano modal-btn-menu">aquí</a>
+    </p>
+    <form id="formRSVP" method="POST" action="{{ url_for('rsvp_es') }}">
+        <div class="row" if="first-info">
+            <div class="six columns c-left">
+                <label for="name">Nombre</label>
+                <input class="u-full-width rsvp" type="text" id="name" name="name" required>
+            </div>
+            <div class="six columns c-left">
+                <label for="surname">Apellidos</label>
+                <input class="u-full-width rsvp" type="text" id="surname" name="surname" required>
+            </div>
+            <!-- <div class="four columns c-left">
+                <label for="email">Email</label>
+                <input class="u-full-width rsvp" type="email" id="email" name="email">
+            </div> -->
+        </div>
+        <div class="row">
+            <div class="four columns c-left">
+                <label for="attending">¿Vienes a la boda?</label>
+                <div class="radio-buttons">
+                    <label style="padding: 10px;">
+                        <input type="radio" name="attending" value="yes" checked onchange="toggleSelectGuests()">
+                        <span class="label-body">Sí</span>
+                    </label>
+                    <label class="inline">
+                        <input type="radio" name="attending" value="no" onchange="toggleSelectGuests()">
+                        <span class="label-body">No</span>
+                    </label>
+                </div>
+            </div>
+            <div class="four columns c-left">
+                <label for="guests">Número total de invitados</label>
+                <select id="guests-select" class="u-full-width c-left" name="guests" required onchange="addGuests()">
+                    <option value="" selected disabled>Selecciona el número de invitados</option>
+                    <option value="0" hidden>0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="names-meals" hidden></div>
+
+        <div class="row" hidden>
+            <div class="six columns rsvp">
+                <div id="guests-names"></div>
+            </div>
+            <div class="six columns rsvp">
+                <div id="guests-meals"></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="twelve columns">
+                <div class="c-left">
+                    <label for="exampleMessage">Mensaje</label>
+                    <textarea class="u-full-width rsvp"
+                        placeholder="- Escríbenos cualquier información adicional que te gustaría hacernos saber.&#13;&#10;- ¿Tienes una canción favorita que quieres bailar en la recepción? ¡Cuéntanos!"
+                        id="exampleMessage" name="message"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="button-group">
+            <input class="button-primary btn-rsvp" type="submit" value="Enviar">
+            <button class="button btn-rsvp clear-btn" onclick="resetForm('formRSVP')">Limpiar</button>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
+
+
+
+
+{% block modals %}
+{% include 'modals/menu.html' %}
+{% endblock %}

@@ -1,26 +1,38 @@
+{% if lang == 'en' %}
 <div class="modal" id="modal-menu">
     <div class="container modal-content">
         <span class="close-menu">&times;</span>
-        <h2>Menu</h2>
-        <!-- <div class="row">
-            <div class="three columns">
-                <h5 style="text-decoration: underline;">Meat</h5>
-                <ul class="c-left">
-                    <li>Una cosa</li>
-                    <li>Y otra</li>
-                    <li>Y otra más</li>
-                </ul>
+        <h2>Entrée</h2>
+        <div class="row">
+            <div class="twelve columns">
+                <p>Braised Short Ribs in a Chianti Wine Reduction</p>
+                <p><small><i>or</i></small></p>
+                <p>Grilled North Atlantic Swordfish topped with a Fruit Salsa</p>
+                <p><small><i>or</i></small></p>
+                <p>Wild Mushroom Ravioli in a Porcini Mushroom Cream Sauce</p>
+                <hr>
+                <p>Children's Meal - Chicken Tenders with French Fries</p>
             </div>
-            <div class="three columns">
-                <h5>Fish</h5>
-            </div>
-            <div class="three columns">
-                <h5>Vegan</h5>
-            </div>
-            <div class="three columns">
-                <h5>Child Menu</h5>
-            </div>
-        </div> -->
-        <p>More information soon</p>
+        </div>
     </div>
 </div>
+
+{% else %}
+<div class="modal" id="modal-menu">
+    <div class="container modal-content">
+        <span class="close-menu">&times;</span>
+        <h2>Plato principal</h2>
+        <div class="row">
+            <div class="twelve columns">
+                <p>Tira de asado de ternera en una reducción de vino Chianti</p>
+                <p><small><i>o</i></small></p>
+                <p>Emperador del Atlántico Norte a la parrilla con salsa de frutas</p>
+                <p><small><i>o</i></small></p>
+                <p>Ravioli de champiñones silvestres en una salsa cremosa de hongos porcini</p>
+                <hr>
+                <p>Menú infantil - Pechuga de pollo frito con patatas fritas</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
