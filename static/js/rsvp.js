@@ -162,7 +162,7 @@ function generateGuest(column, i) {
 
     label.htmlFor = "guest-name-" + i;
     label.style.textAlign = "left"
-    label.innerHTML = "Guest #" + (i + 1) + " Name";
+    label.innerHTML = "Guest " + (i + 1) + " - Name";
 
     input.type = "text";
     input.name = "guest-name-" + i;
@@ -178,7 +178,7 @@ function generateGuest(column, i) {
         input.readOnly = true;
         input.classList.remove("rsvp");
     } else {
-        input.placeholder = "Guest #" + (i + 1) + " name";
+        input.placeholder = "Guest " + (i + 1) + " - name";
     }
 
     column.appendChild(label);
@@ -191,14 +191,13 @@ function generateMeal(column, i) {
 
     label.htmlFor = "guest-meal-" + i;
     label.style.textAlign = "left"
-    // label.innerHTML = "Guest #" + (i + 1) + " Meal Choice";
     label.innerHTML = "Please, choose an entrée for the wedding reception:";
 
     select.required = true;
     select.className = "u-full-width";
     select.name = "guest-meal-" + i;
 
-    select.placeholder = "Guest #" + (i + 1) + " Meal";
+    select.placeholder = "Guest " + (i + 1) + " - Meal";
 
     addOptionsMeal(select);
 
@@ -239,7 +238,7 @@ function generateHotel(column, labelHotel, i) {
     select.className = "u-full-width";
     select.name = "hotel-" + i;
 
-    select.placeholder = "Guest #" + (i + 1) + " Hotel";
+    select.placeholder = "Guest " + (i + 1) + " - Hotel";
 
     addOptionsHotel(select);
 
