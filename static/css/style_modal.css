@@ -1,5 +1,6 @@
 .modal,
-.modal-menu {
+.modal-menu,
+.modal-alertRsvp {
     display: none;
     position: fixed;
     z-index: 1;
@@ -22,7 +23,8 @@
 }
 
 .close,
-.close-menu {
+.close-menu,
+.close-alertRsvp {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -31,8 +33,10 @@
 
 .close:hover,
 .close-menu:hover,
+.close-alertRsvp:hover,
 .close:focus,
-.close-menu:focus {
+.close-menu:focus,
+.close-alertRsvp:focus {
     color: black;
     text-decoration: none;
     cursor: pointer;

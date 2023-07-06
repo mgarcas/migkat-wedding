@@ -1,6 +1,9 @@
 {% extends 'es/base_es.html' %}
 
 {% block title %}Boda K&M - Home{% endblock %}
+{% block head %}
+<script type="text/javascript" src="{{ url_for('static', filename='js/alert_rsvp.js') }}"></script>
+{% endblock %}
 
 {% block main %}
 <div class="container">
@@ -27,5 +30,9 @@
     </div>
     {% endblock %}
 </footer>
+
+{% block modals %}
+{% include 'modals/alert_rsvp.html' %}
+{% endblock %}
 
 {% block scripts %}{% endblock %}

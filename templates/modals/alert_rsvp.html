@@ -1,0 +1,36 @@
+{% if lang == 'en' %}
+<div class="modal" id="modal-alertRsvp">
+    <div class="container modal-content">
+        <span class="close-alertRsvp">&times;</span>
+        <h2>Important Message</h2>
+        <div class="row">
+            <div class="twelve columns">
+                <p>Please, remember to RSVP before July 12th!</p>
+                <p>
+                    <a href="/rsvp"><box-icon type='solid' color='#ffffff' name='edit' class="icon"></box-icon>Here!</a>
+                </p>
+                <p>Fill out the form for yourself and additional guests. It will take you less than 2 minutes.</p>
+                <p>Thank you so much!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% else %}
+<div class="modal" id="modal-alertRsvp">
+    <div class="container modal-content">
+        <span class="close-alertRsvp">&times;</span>
+        <h2>Mensaje importante</h2>
+        <div class="row">
+            <div class="twelve columns">
+                <p>Por favor, recuerda confirmar tu asistencia antes del 12 de julio.</p>
+                <p>
+                    <a href="/es/rsvp"><box-icon type='solid' color='#ffffff' name='edit' class="icon"></box-icon>¡Aquí!</a>
+                </p>
+                <p>Completa el formulario para ti mismo y acompañantes. No te llevará más de dos minutos.</p>
+                <p>¡Muchas gracias!</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
